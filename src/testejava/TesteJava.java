@@ -34,7 +34,6 @@ public class TesteJava {
         while(scan.hasNext()){
             
             String nome = scan.next();
-            
             int idade = scan.nextInt();
             int peso = scan.nextInt();
             Guerreiro g1 = new Guerreiro(nome, idade, peso);
