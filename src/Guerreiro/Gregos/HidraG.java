@@ -10,9 +10,8 @@ package Guerreiro.Gregos;
  */
 public class HidraG extends Grego{
 
-    public HidraG(String nome, int idade, double peso, int energia) {
-        super(nome, idade, peso, energia);
-        this.setEnergia(100);
+    public HidraG(String nome, int idade, double peso) {
+        super(nome, idade, peso);
     }
     
 }

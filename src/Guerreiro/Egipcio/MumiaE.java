@@ -10,9 +10,8 @@ package Guerreiro.Egipcio;
  */
 public class MumiaE extends Egipcio{
 
-    public MumiaE(String nome, int idade, double peso, int energia) {
-        super(nome, idade, peso, energia);
-        this.setEnergia(100);
+    public MumiaE(String nome, int idade, double peso) {
+        super(nome, idade, peso);
     }
     
     

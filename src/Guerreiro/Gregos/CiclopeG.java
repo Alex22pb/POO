@@ -10,9 +10,8 @@ package Guerreiro.Gregos;
  */
 public class CiclopeG extends Grego{
 
-    public CiclopeG(String nome, int idade, double peso, int energia) {
-        super(nome, idade, peso, energia);
-        this.setEnergia(100);
+    public CiclopeG(String nome, int idade, double peso) {
+        super(nome, idade, peso);
     }
 
     

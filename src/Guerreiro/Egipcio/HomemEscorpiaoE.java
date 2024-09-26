@@ -10,9 +10,9 @@ package Guerreiro.Egipcio;
  */
 public class HomemEscorpiaoE extends Egipcio{
 
-    public HomemEscorpiaoE(String nome, int idade, double peso, int energia) {
-        super(nome, idade, peso, energia);
-        this.setEnergia(100);
+    public HomemEscorpiaoE(String nome, int idade, double peso) {
+        super(nome, idade, peso);
+
     }
     
     

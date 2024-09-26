@@ -5,8 +5,8 @@
 package testejava;
 
 import Guerreiro.Guerreiro;
-import helpMe.ArraisListas;
-import static helpMe.ArraisListas.iniciarArray;
+import helpMe.Arena;
+import static helpMe.Arena.iniciarArray;
 import helpMe.Leitura;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -34,7 +34,7 @@ public class TesteJava {
             // Chamadas para exibir dados de guerreiros, maior peso e guerreiro mais velho
             AparecerQuestoes.exibirDados();
             AparecerQuestoes.exibirPeso();
-            QuestoesTrabalho.maisVelho(ArraisListas.getLista11(), ArraisListas.getLista12(), ArraisListas.getLista13(), ArraisListas.getLista14(), ArraisListas.getLista21(),ArraisListas.getLista22(), ArraisListas.getLista23(), ArraisListas.getLista24()); 
+            QuestoesTrabalho.maisVelho(Arena.getArena()); 
             
 
         } catch (IOException e) {

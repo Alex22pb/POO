@@ -10,8 +10,8 @@ package Guerreiro.Atlantico;
  */
 public class ArgusA extends AtlanticoA{
 
-    public ArgusA(String nome, int idade, double peso, int energia) {
-        super(nome, idade, peso, energia);
+    public ArgusA(String nome, int idade, double peso) {
+        super(nome, idade, peso);
         this.setEnergia(60);    
     }
     

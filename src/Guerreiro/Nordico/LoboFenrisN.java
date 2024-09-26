@@ -10,9 +10,9 @@ package Guerreiro.Nordico;
  */
 public class LoboFenrisN extends Nordico{
 
-    public LoboFenrisN(String nome, int idade, double peso, int energia) {
-        super(nome, idade, peso, energia);
-        this.setEnergia(100);
+    public LoboFenrisN(String nome, int idade, double peso) {
+        super(nome, idade, peso);
+        
     }
     
     

@@ -10,9 +10,9 @@ package Guerreiro.Nordico;
  */
 public class ValquiriaN extends Nordico{
 
-    public ValquiriaN(String nome, int idade, double peso, int energia) {
-        super(nome, idade, peso, energia);
-        this.setEnergia(100);
+    public ValquiriaN(String nome, int idade, double peso) {
+        super(nome, idade, peso);
+        
     }
     
     

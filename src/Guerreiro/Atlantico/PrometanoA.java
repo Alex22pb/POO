@@ -10,9 +10,8 @@ package Guerreiro.Atlantico;
  */
 public class PrometanoA extends AtlanticoA{
 
-    public PrometanoA(String nome, int idade, double peso, int energia) {
-        super(nome, idade, peso, energia);
-        this.setEnergia(100);
+    public PrometanoA(String nome, int idade, double peso) {
+        super(nome, idade, peso);
     }
     
     

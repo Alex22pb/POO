@@ -12,8 +12,8 @@ import Guerreiro.Guerreiro;
  */
 public class AtlanticoA extends Guerreiro{
 
-    public AtlanticoA(String nome, int idade, double peso, int energia) {
-        super(nome, idade, peso, energia);
+    public AtlanticoA(String nome, int idade, double peso) {
+        super(nome, idade, peso);
     }
     
     

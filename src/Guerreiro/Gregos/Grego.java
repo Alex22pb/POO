@@ -11,9 +11,10 @@ import Guerreiro.Guerreiro;
  * @author Usuario
  */
 public class Grego extends Guerreiro{
+    boolean envenenado;
   
-    public Grego(String nome, int idade, double peso, int energia) {
-        super(nome, idade, peso, energia);
+    public Grego(String nome, int idade, double peso) {
+        super(nome, idade, peso);
     }
     
     

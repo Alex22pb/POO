@@ -33,7 +33,7 @@ public class QuestoesTrabalho {
         return somaPeso;
     }
     
-    public static void maisVelho(ArrayList<Guerreiro> lista11, ArrayList<Guerreiro> lista12, ArrayList<Guerreiro> lista13, ArrayList<Guerreiro> lista14, ArrayList<Guerreiro> lista21, ArrayList<Guerreiro> lista22, ArrayList<Guerreiro> lista23, ArrayList<Guerreiro> lista24){
+    public static void maisVelho(ArrayList<Guerreiro> lista){
         Guerreiro armazenarVelho = new Guerreiro(lista11.get(0).getNome(), lista11.get(0).getIdade(), lista11.get(0).getPeso(), lista11.get(0).getEnergia());
         int idadeMaior = armazenarVelho.getIdade();
         

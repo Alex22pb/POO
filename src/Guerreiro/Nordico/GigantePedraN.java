@@ -10,8 +10,8 @@ package Guerreiro.Nordico;
  */
 public class GigantePedraN extends Nordico{
 
-    public GigantePedraN(String nome, int idade, double peso, int energia) {
-        super(nome, idade, peso, energia);
+    public GigantePedraN(String nome, int idade, double peso) {
+        super(nome, idade, peso);
         this.setEnergia(300);
     }
     

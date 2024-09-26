@@ -49,34 +49,34 @@ public class Leitura {
                     Guerreiro g = null;
                     switch (lado) {
                         case 1 ->
-                            g = new CiclopeG(nome, idade, peso, 100);
+                            g = new CiclopeG(nome, idade, peso);
                         case 2 ->
-                            g = new ManticoraG(nome, idade, peso, 100);
+                            g = new ManticoraG(nome, idade, peso);
                         case 3 ->
-                            g = new HidraG(nome, idade, peso, 100);
+                            g = new HidraG(nome, idade, peso);
                         case 4 ->
-                            g = new ValquiriaN(nome, idade, peso, 100);
+                            g = new ValquiriaN(nome, idade, peso);
                         case 5 ->
-                            g = new LoboFenrisN(nome, idade, peso, 100);
+                            g = new LoboFenrisN(nome, idade, peso);
                         case 6 ->
-                            g = new GigantePedraN(nome, idade, peso, 300);
+                            g = new GigantePedraN(nome, idade, peso);
                     }
                      lista.add(g);
                 } else {
                     Guerreiro g = null;
                     switch (lado) {
                         case 1 ->
-                            g = new PrometanoA (nome, idade, peso, 100);
+                            g = new PrometanoA (nome, idade, peso);
                         case 2 ->
-                            g = new SatiroA (nome, idade, peso, 100);
+                            g = new SatiroA (nome, idade, peso);
                         case 3 ->
-                            g = new ArgusA (nome, idade, peso, 60);
+                            g = new ArgusA (nome, idade, peso);
                         case 4 ->
-                            g = new AnubitaE (nome, idade, peso, 100);
+                            g = new AnubitaE (nome, idade, peso);
                         case 5 ->
-                            g = new HomemEscorpiaoE (nome, idade, peso, 100);
+                            g = new HomemEscorpiaoE (nome, idade, peso);
                         case 6 ->
-                            g = new MumiaE (nome, idade, peso, 100);
+                            g = new MumiaE (nome, idade, peso);
                     }
                     lista.add(g);
                 }

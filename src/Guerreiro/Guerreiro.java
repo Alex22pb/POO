@@ -17,11 +17,11 @@ public class Guerreiro {
     double peso;
     int energia;
 
-    public Guerreiro(String nome, int idade, double peso, int energia) {
+    public Guerreiro(String nome, int idade, double peso) {
         this.nome = nome;
         this.idade = idade;
         this.peso = peso;
-        this.energia = energia;
+        this.energia = 100;
     }
 
     public String getNome() {
