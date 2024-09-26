@@ -8,9 +8,9 @@ package Guerreiro.Egipcio;
  *
  * @author Usuario
  */
-public class AnubiaE extends Egipcio{
+public class AnubitaE extends Egipcio{
 
-    public AnubiaE(String nome, int idade, int peso, int energia) {
+    public AnubitaE(String nome, int idade, double peso, int energia) {
         super(nome, idade, peso, energia);
         this.setEnergia(100);
     }

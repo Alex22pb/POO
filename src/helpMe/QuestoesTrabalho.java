@@ -13,14 +13,19 @@ import java.util.ArrayList;
  */
 public class QuestoesTrabalho {
     
-    public void exibirDadosGuerreiros(ArrayList<Guerreiro> lista){
-        System.out.println("\tDados do Guerreiro\n");
+    public static void exibirDadosGuerreiros(ArrayList<Guerreiro> lista, int lado){
+        if(lado == 1){
+            System.out.println("\tGuerreiros Gregos e Nórdicos \n");
+        }else{
+            System.out.println("\tGuerreiros Atlanticos e Egípcios\n");
+        }
+        System.out.println("\n\tDados dos Guerreiros\n");
         for (Guerreiro g: lista){
             System.out.println("Nome: " + g.getNome() + "Idade: " + g.getIdade() + "Peso: " + g.getPeso() + "Energia: " + g.getEnergia());
         }
     }
     
-    public double somaPesos(ArrayList<Guerreiro> lista){
+    public static double somaPesos(ArrayList<Guerreiro> lista){
         double somaPeso = 0;
         for (Guerreiro g: lista){
             somaPeso+=g.getPeso();
@@ -28,7 +33,7 @@ public class QuestoesTrabalho {
         return somaPeso;
     }
     
-    public void maisVelho(ArrayList<Guerreiro> lista11, ArrayList<Guerreiro> lista12, ArrayList<Guerreiro> lista13, ArrayList<Guerreiro> lista14, ArrayList<Guerreiro> lista21, ArrayList<Guerreiro> lista22, ArrayList<Guerreiro> lista23, ArrayList<Guerreiro> lista24){
+    public static void maisVelho(ArrayList<Guerreiro> lista11, ArrayList<Guerreiro> lista12, ArrayList<Guerreiro> lista13, ArrayList<Guerreiro> lista14, ArrayList<Guerreiro> lista21, ArrayList<Guerreiro> lista22, ArrayList<Guerreiro> lista23, ArrayList<Guerreiro> lista24){
         Guerreiro armazenarVelho = new Guerreiro(lista11.get(0).getNome(), lista11.get(0).getIdade(), lista11.get(0).getPeso(), lista11.get(0).getEnergia());
         int idadeMaior = armazenarVelho.getIdade();
         
