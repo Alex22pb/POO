@@ -33,58 +33,20 @@ public class QuestoesTrabalho {
         return somaPeso;
     }
     
+    public static Guerreiro percorrer(ArrayList<Guerreiro> vetor, Guerreiro g){
+        for(Guerreiro g: vetor){
+            if(idadeMaior < g.getIdade()){
+                armazenarVelho = g;
+            }
+        }
+        return g;
+    }
+    
     public static void maisVelho(ArrayList<Guerreiro> lista){
-        Guerreiro armazenarVelho = new Guerreiro(lista11.get(0).getNome(), lista11.get(0).getIdade(), lista11.get(0).getPeso(), lista11.get(0).getEnergia());
-        int idadeMaior = armazenarVelho.getIdade();
+        Guerreiro armazenarVelho = new Guerreiro(lista.get(0).getNome(), lista.get(0).getIdade(), lista.get(0).getPeso());
         
         
-        for(Guerreiro g: lista11){
-            if(idadeMaior < g.getIdade()){
-                armazenarVelho = g;
-            }
-        }
-        
-        for(Guerreiro g: lista12){
-            if(idadeMaior < g.getIdade()){
-                armazenarVelho = g;
-            }
-        }
-        
-        for(Guerreiro g: lista13){
-            if(idadeMaior < g.getIdade()){
-                armazenarVelho = g;
-            }
-        }
-        
-        for(Guerreiro g: lista14){
-            if(idadeMaior < g.getIdade()){
-                armazenarVelho = g;
-            }
-        }
-        
-        for(Guerreiro g: lista21){
-            if(idadeMaior < g.getIdade()){
-                armazenarVelho = g;
-            }
-        }
-        
-        for(Guerreiro g: lista22){
-            if(idadeMaior < g.getIdade()){
-                armazenarVelho = g;
-            }
-        }
-        
-        for(Guerreiro g: lista23){
-            if(idadeMaior < g.getIdade()){
-                armazenarVelho = g;
-            }
-        }
-        
-        for(Guerreiro g: lista24){
-            if(idadeMaior < g.getIdade()){
-                armazenarVelho = g;
-            }
-        }
+        percorrer(lista, armazenarVelho);
         
         System.out.println("\tGuerreiro mais velho\n");
         System.out.println("Nome: " + armazenarVelho.getNome() + "Idade: " + armazenarVelho.getIdade() + "Peso: " + armazenarVelho.getPeso() + "Energia: " + armazenarVelho.getEnergia());
