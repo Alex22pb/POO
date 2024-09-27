@@ -24,7 +24,7 @@ public class Arena {
         private static ArrayList<Guerreiro> ListaGuerreiro23 = new ArrayList<Guerreiro>();
         private static ArrayList<Guerreiro> ListaGuerreiro24 = new ArrayList<Guerreiro>();
         
-        private static ArrayList<Guerreiro> VetorArena = new ArrayList<Guerreiro>();
+        private static ArrayList<ArrayList<Guerreiro>> VetorArena = new ArrayList<Guerreiro>();
         
         //Criação dos métodos da para acessar os Arrays
         public static ArrayList<Guerreiro> getLista11(){return ListaGuerreiro11;}
@@ -37,7 +37,7 @@ public class Arena {
         public static ArrayList<Guerreiro> getLista23(){return ListaGuerreiro23;}
         public static ArrayList<Guerreiro> getLista24(){return ListaGuerreiro24;}
         
-        public static ArrayList<Guerreiro> getArena(){return VetorArena;}
+        public static ArrayList<ArrayList<Guerreiro>> getArena(){return VetorArena;}
         
         
         public static void iniciarArray() throws IOException{
