@@ -21,7 +21,7 @@ public class JavaApplication2 {
             iniciarArray(); // Certifique-se de que isso inicializa todas as listas de guerreiros necessárias
 
             // Chamadas para exibir dados de guerreiros, maior peso e guerreiro mais velho
-           AparecerQuestoes.exibirDados();
+            AparecerQuestoes.exibirDados();
             AparecerQuestoes.exibirPeso();
             QuestoesTrabalho.maisVelho(Arena.getArena()); 
 //            
