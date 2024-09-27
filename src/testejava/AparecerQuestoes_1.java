@@ -13,7 +13,7 @@ import helpMe.QuestoesTrabalho;
  *
  * @author 2022222760020
  */
-public class AparecerQuestoes {
+public class AparecerQuestoes_1 {
     public static void exibirDados(){
         QuestoesTrabalho.exibirDadosGuerreiros(Arena.getLista11(), 1);
             QuestoesTrabalho.exibirDadosGuerreiros(Arena.getLista12(), 1);
