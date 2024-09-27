@@ -42,15 +42,15 @@ public class Arena {
         
         public static void iniciarArray() throws IOException{
 
-//            Leitura.lerArquivo(1, "fila11.txt", getLista11());
-//            Leitura.lerArquivo(1, "fila12.txt", getLista12());
-//            Leitura.lerArquivo(1, "fila13.txt", getLista13());
-//            Leitura.lerArquivo(1, "fila14.txt", getLista14());
-//
-//            Leitura.lerArquivo(2, "fila21.txt", getLista21());
-//            Leitura.lerArquivo(2, "fila22.txt", getLista22());
-//            Leitura.lerArquivo(2, "fila23.txt", getLista23());
-//            Leitura.lerArquivo(2, "fila24.txt", getLista24());
+            Leitura.lerArquivo(1, "arquivos/fila11.txt", getLista11());
+            Leitura.lerArquivo(1, "arquivos/fila12.txt", getLista12());
+            Leitura.lerArquivo(1, "arquivos/fila13.txt", getLista13());
+            Leitura.lerArquivo(1, "arquivos/fila14.txt", getLista14());
+
+            Leitura.lerArquivo(2, "arquivos/fila21.txt", getLista21());
+            Leitura.lerArquivo(2, "arquivos/fila22.txt", getLista22());
+            Leitura.lerArquivo(2, "arquivos/fila23.txt", getLista23());
+            Leitura.lerArquivo(2, "arquivos/fila24.txt", getLista24());
             
             VetorArena.add(getLista11());
             VetorArena.add(getLista12());

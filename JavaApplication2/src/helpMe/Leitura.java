@@ -42,8 +42,9 @@ public class Leitura {
             while (scan.hasNext()) {
                 lado = scan.nextInt();
                 nome = scan.next();
-                idade = scan.nextInt();
                 peso = scan.nextDouble();
+                idade = scan.nextInt();
+     
 
                 if (ladoEscolha == 1) {
                     Guerreiro g = null;
