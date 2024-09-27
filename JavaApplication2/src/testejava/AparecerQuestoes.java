@@ -10,11 +10,15 @@ import helpMe.QuestoesTrabalho;
 public class AparecerQuestoes {
 
     public static void exibirDados() {
+        
+        System.out.println("\nDados dos Guerreiros\n");
+        System.out.println("=============Guerreiros Gregos e Nórdicos=============");
         QuestoesTrabalho.exibirDadosGuerreiros(Arena.getLista11(), 1);
         QuestoesTrabalho.exibirDadosGuerreiros(Arena.getLista12(), 1);
         QuestoesTrabalho.exibirDadosGuerreiros(Arena.getLista13(), 1);
         QuestoesTrabalho.exibirDadosGuerreiros(Arena.getLista14(), 1);
 
+        System.out.println("\n=============Guerreiros Atlanticos e Egípcios=============\n");
         QuestoesTrabalho.exibirDadosGuerreiros(Arena.getLista21(), 2);
         QuestoesTrabalho.exibirDadosGuerreiros(Arena.getLista22(), 2);
         QuestoesTrabalho.exibirDadosGuerreiros(Arena.getLista23(), 2);

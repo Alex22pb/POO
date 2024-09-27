@@ -14,15 +14,8 @@ import java.util.ArrayList;
 public class QuestoesTrabalho {
 
     public static void exibirDadosGuerreiros(ArrayList<Guerreiro> lista, int lado) {
-        int i = 0;
-        if (lado == 1) {
-            System.out.println("\tGuerreiros Gregos e Nórdicos \n");
-        } else {
-            System.out.println("\tGuerreiros Atlanticos e Egípcios\n");
-        }
-        System.out.println("\n\tDados dos Guerreiros\n");
         for(Guerreiro g : lista) {
-            System.out.println("Nome: " + lista.get(i).getNome() + " Idade: " + lista.get(i).getIdade() + " Peso: " + lista.get(i).getPeso() + " Energia: " + lista.get(i).getEnergia());
+            System.out.println("Nome: " + g.getNome() + " Idade: " + g.getIdade() + " Peso: " + g.getPeso() + " Energia: " + g.getEnergia());
         }
     }
 
@@ -41,6 +34,7 @@ public class QuestoesTrabalho {
             for (Guerreiro warrior : lista) {
                 if (idadeMaior < warrior.getIdade()) {
                     maisVelho = warrior;
+                    idadeMaior = maisVelho.getIdade();
                 }
             }
         }
