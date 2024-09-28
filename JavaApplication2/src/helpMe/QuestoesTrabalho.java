@@ -13,16 +13,25 @@ import java.util.ArrayList;
  */
 public class QuestoesTrabalho {
 
-    public static void exibirDadosGuerreiros(ArrayList<Guerreiro> lista, int lado) {
-        for(Guerreiro g : lista) {
-            System.out.println("Nome: " + g.getNome() + " Idade: " + g.getIdade() + " Peso: " + g.getPeso() + " Energia: " + g.getEnergia());
+    public static void exibirDadosGuerreiros(ArrayList<ArrayList<Guerreiro>> lista) {
+        int i = 0;
+        for (ArrayList<Guerreiro> vetor : lista) {
+            i++;
+            if(i == 4){
+                System.out.println("\n=============Guerreiros Atlanticos e Egípcios=============\n");
+            }
+            for (Guerreiro g : vetor) {
+                System.out.println("Nome: " + g.getNome() + " Idade: " + g.getIdade() + " Peso: " + g.getPeso() + " Energia: " + g.getEnergia());
+            }
         }
     }
 
-    public static double somaPesos(ArrayList<Guerreiro> lista) {
+    public static double somaPesos(ArrayList<ArrayList<Guerreiro>> lista) {
         double somaPeso = 0;
-        for (Guerreiro g : lista) {
-            somaPeso += g.getPeso();
+        for(ArrayList<Guerreiro> vetor : lista){
+            for (Guerreiro g : vetor) {
+                somaPeso += g.getPeso();
+            }
         }
         return somaPeso;
     }
@@ -46,7 +55,7 @@ public class QuestoesTrabalho {
 
         armazenarVelho = percorrer(lista, armazenarVelho);
 
-        System.out.println("\nGuerreiro mais velho\n");
+        System.out.println("\nGuerreiro mais velho: ");
         System.out.println("Nome: " + armazenarVelho.getNome() + " Idade: " + armazenarVelho.getIdade() + " Peso: " + armazenarVelho.getPeso() + " Energia: " + armazenarVelho.getEnergia());
 
     }
