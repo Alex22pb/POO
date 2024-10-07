@@ -14,5 +14,11 @@ public class SatiroA extends AtlanticoA{
         super(nome, idade, peso);
     }
     
+    @Override
+    public boolean atacar(){
     
+        return false;
+    
+    }
+        
 }

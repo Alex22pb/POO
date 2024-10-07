@@ -16,5 +16,9 @@ public class CiclopeG extends Grego{
 
     
     
+    public boolean atacar(){
     
+        return false;
+    
+    }
 }

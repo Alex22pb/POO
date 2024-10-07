@@ -10,10 +10,20 @@ import Guerreiro.Guerreiro;
  *
  * @author Usuario
  */
-public class Nordico extends Guerreiro{
+public abstract class Nordico extends Guerreiro{
+    String classe = "Nordico";
+    boolean envenenado;
     
     public Nordico(String nome, int idade, double peso) {
         super(nome, idade, peso);
+    }
+
+    public String getClasse() {
+        return classe;
+    }
+
+    public boolean isEnvenenado() {
+        return envenenado;
     }
     
     

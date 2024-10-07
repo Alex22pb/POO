@@ -2,21 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Guerreiro.Gregos;
+package helpMe;
 
 /**
  *
  * @author Usuario
  */
-public class HidraG extends Grego{
-
-    public HidraG(String nome, int idade, double peso) {
-        super(nome, idade, peso);
-    }
-    
-    public boolean atacar(){
-    
-        return false;
-    
+public class Sorteio {
+    public static int realizarSorteio(){
+        int  num = (int) (Math.random() *2); //RETORNA 0 OU 1
+        return num;
     }
 }

@@ -15,5 +15,10 @@ public class ArgusA extends AtlanticoA{
         this.setEnergia(60);    
     }
     
+    @Override
+    public boolean atacar(){
+    
+        return false;
+    }
     
 }

@@ -14,5 +14,9 @@ public class AnubitaE extends Egipcio{
         super(nome, idade, peso);
     }
     
+    public boolean atacar(){
     
+        return false;
+    
+    }
 }

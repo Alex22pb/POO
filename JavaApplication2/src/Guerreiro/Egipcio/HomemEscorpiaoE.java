@@ -15,5 +15,10 @@ public class HomemEscorpiaoE extends Egipcio{
 
     }
     
+    public boolean atacar(){
+    
+        return false;
+    
+    }
     
 }

@@ -4,6 +4,7 @@
  */
 package helpMe;
 
+import Guerreiro.Atlantico.ArgusA;
 import Guerreiro.Guerreiro;
 import java.util.ArrayList;
 
@@ -17,8 +18,8 @@ public class QuestoesTrabalho {
         int i = 0;
         for (ArrayList<Guerreiro> vetor : lista) {
             i++;
-            if(i == 4){
-                System.out.println("\n=============Guerreiros Atlanticos e Egípcios=============\n");
+            if(i == 5){
+                System.out.println("\n=============Guerreiros Atlanticos e Egípcios=============");
             }
             for (Guerreiro g : vetor) {
                 System.out.println("Nome: " + g.getNome() + " Idade: " + g.getIdade() + " Peso: " + g.getPeso() + " Energia: " + g.getEnergia());
@@ -51,7 +52,7 @@ public class QuestoesTrabalho {
     }
 
     public static void maisVelho(ArrayList<ArrayList<Guerreiro>> lista) {
-        Guerreiro armazenarVelho = new Guerreiro(lista.get(0).get(0).getNome(), lista.get(0).get(0).getIdade(), lista.get(0).get(0).getPeso());
+        Guerreiro armazenarVelho = new ArgusA(lista.get(0).get(0).getNome(), lista.get(0).get(0).getIdade(), lista.get(0).get(0).getPeso());
 
         armazenarVelho = percorrer(lista, armazenarVelho);
 

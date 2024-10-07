@@ -10,12 +10,12 @@ import java.util.ArrayList;
  *
  * @author Usuario
  */
-public class Guerreiro {
+public abstract class Guerreiro {
 
-    String nome;
-    int idade;
-    double peso;
-    int energia;
+    private String nome;
+    private int idade;
+    private double peso;
+    private int energia;
 
     public Guerreiro(String nome, int idade, double peso) {
         this.nome = nome;
@@ -56,11 +56,8 @@ public class Guerreiro {
         this.energia = energia;
     }
 
-    
-
-    public static void atacar(){
-        
-    }
+   
+    public abstract boolean atacar();
     
     public void imprimir() {
         System.out.println("Nome: " +this.getNome() + " Idade: " + this.getIdade() + " Peso: " + this.getPeso());

@@ -15,5 +15,9 @@ public class ManticoraG extends Grego{
     }
         
     
+    public boolean atacar(){
     
+        return false;
+    
+    }
 }

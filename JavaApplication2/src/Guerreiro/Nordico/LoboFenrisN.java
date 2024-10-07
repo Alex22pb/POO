@@ -15,5 +15,9 @@ public class LoboFenrisN extends Nordico{
         
     }
     
+    public boolean atacar(){
     
+        return false;
+    
+    }
 }

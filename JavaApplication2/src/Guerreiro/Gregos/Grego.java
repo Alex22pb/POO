@@ -10,8 +10,9 @@ import Guerreiro.Guerreiro;
  *
  * @author Usuario
  */
-public class Grego extends Guerreiro{
+public abstract class Grego extends Guerreiro{
     boolean envenenado;
+    String classe = "Grego";
   
     public Grego(String nome, int idade, double peso) {
         super(nome, idade, peso);
@@ -24,4 +25,15 @@ public class Grego extends Guerreiro{
         }
     
     }
+
+    public String getClasse() {
+        return classe;
+    }
+
+    public boolean isEnvenenado() {
+        return envenenado;
+    }
+    
+    
+    
 }

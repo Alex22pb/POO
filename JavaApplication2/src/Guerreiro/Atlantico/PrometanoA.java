@@ -14,5 +14,11 @@ public class PrometanoA extends AtlanticoA{
         super(nome, idade, peso);
     }
     
+    @Override
+    public boolean atacar(){
     
+        return false;
+    
+    }
+        
 }

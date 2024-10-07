@@ -15,5 +15,9 @@ public class GigantePedraN extends Nordico{
         this.setEnergia(300);
     }
     
+    public boolean atacar(){
     
+        return false;
+    
+    }
 }

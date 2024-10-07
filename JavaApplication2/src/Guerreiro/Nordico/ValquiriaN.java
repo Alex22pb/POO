@@ -15,5 +15,9 @@ public class ValquiriaN extends Nordico{
         
     }
     
+    public boolean atacar(){
     
+        return false;
+    
+    }
 }

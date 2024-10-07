@@ -10,11 +10,15 @@ import Guerreiro.Guerreiro;
  *
  * @author Usuario
  */
-public class Egipcio extends Guerreiro{
-
+public abstract class Egipcio extends Guerreiro{
+    private String classe = "Egpicio";
+    
     public Egipcio(String nome, int idade, double peso) {
         super(nome, idade, peso);
     }
-    
+
+    public String getClasse() {
+        return classe;
+    }
     
 }

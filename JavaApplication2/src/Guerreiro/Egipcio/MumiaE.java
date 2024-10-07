@@ -15,5 +15,9 @@ public class MumiaE extends Egipcio{
     }
     
     
+    public boolean atacar(){
     
+        return false;
+    
+    }
 }

@@ -63,6 +63,12 @@ public class Arena {
             VetorArena.add(getLista24());
             
         }
-
+        
+        public static void comecarBatalha(){
+        
+            System.out.println("\n\n=============================== |JOGO INICIADO| ===============================\n");
+            
+            
+        }
     
 }

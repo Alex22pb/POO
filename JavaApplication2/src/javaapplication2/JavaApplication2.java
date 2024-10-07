@@ -25,6 +25,8 @@ public class JavaApplication2 {
             System.out.println("\nA soma dos pesos de todos os guerreiros e: " + maiorPeso);
             
             QuestoesTrabalho.maisVelho(Arena.getArena());
+            
+            Arena.comecarBatalha();
 //            
 
         } catch (IOException e) {
