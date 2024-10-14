@@ -4,6 +4,9 @@
  */
 package Guerreiro.Nordico;
 
+import Guerreiro.Guerreiro;
+import java.util.ArrayList;
+
 /**
  *
  * @author Usuario
@@ -15,9 +18,10 @@ public class ValquiriaN extends Nordico{
         
     }
     
-    public boolean atacar(){
+    @Override
+    public void atacar(Guerreiro defender, ArrayList<Guerreiro> filaDefensor, ArrayList<Guerreiro> filaAtacante){
     
-        return false;
+        
     
     }
 }

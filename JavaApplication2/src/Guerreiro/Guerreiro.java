@@ -57,11 +57,13 @@ public abstract class Guerreiro {
     }
 
    
-    public abstract boolean atacar();
+    public abstract void atacar(Guerreiro defender, ArrayList<Guerreiro> filaDefensor, ArrayList<Guerreiro> filaAtacante);
     
     public void imprimir() {
         System.out.println("Nome: " +this.getNome() + " Idade: " + this.getIdade() + " Peso: " + this.getPeso());
     }
+
+ 
 }
 
     

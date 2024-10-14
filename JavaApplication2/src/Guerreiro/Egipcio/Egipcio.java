@@ -11,14 +11,15 @@ import Guerreiro.Guerreiro;
  * @author Usuario
  */
 public abstract class Egipcio extends Guerreiro{
-    private String classe = "Egpicio";
+    boolean forcarSerAtk;
     
     public Egipcio(String nome, int idade, double peso) {
         super(nome, idade, peso);
     }
 
-    public String getClasse() {
-        return classe;
+    public boolean isForcarSerAtk() {
+        return forcarSerAtk;
     }
-    
+
+   
 }

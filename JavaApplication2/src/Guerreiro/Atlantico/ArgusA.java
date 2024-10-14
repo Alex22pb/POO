@@ -4,6 +4,9 @@
  */
 package Guerreiro.Atlantico;
 
+import Guerreiro.Guerreiro;
+import java.util.ArrayList;
+
 /**
  *
  * @author Usuario
@@ -15,10 +18,13 @@ public class ArgusA extends AtlanticoA{
         this.setEnergia(60);    
     }
     
-    @Override
-    public boolean atacar(){
     
-        return false;
+    
+    @Override
+    public void atacar(Guerreiro defender, ArrayList<Guerreiro> filaDefensor, ArrayList<Guerreiro> filaAtacante){
+    
+        
+    
     }
     
 }

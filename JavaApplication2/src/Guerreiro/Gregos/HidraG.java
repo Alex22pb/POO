@@ -4,6 +4,9 @@
  */
 package Guerreiro.Gregos;
 
+import Guerreiro.Guerreiro;
+import java.util.ArrayList;
+
 /**
  *
  * @author Usuario
@@ -14,9 +17,10 @@ public class HidraG extends Grego{
         super(nome, idade, peso);
     }
     
-    public boolean atacar(){
+    @Override
+    public void atacar(Guerreiro defender, ArrayList<Guerreiro> filaDefensor, ArrayList<Guerreiro> filaAtacante){
     
-        return false;
+        
     
     }
 }

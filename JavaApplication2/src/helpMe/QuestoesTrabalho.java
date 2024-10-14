@@ -5,7 +5,9 @@
 package helpMe;
 
 import Guerreiro.Atlantico.ArgusA;
+import Guerreiro.Gregos.Grego;
 import Guerreiro.Guerreiro;
+import Guerreiro.Nordico.Nordico;
 import java.util.ArrayList;
 
 /**
@@ -52,13 +54,36 @@ public class QuestoesTrabalho {
     }
 
     public static void maisVelho(ArrayList<ArrayList<Guerreiro>> lista) {
-        Guerreiro armazenarVelho = new ArgusA(lista.get(0).get(0).getNome(), lista.get(0).get(0).getIdade(), lista.get(0).get(0).getPeso());
+        ArrayList<Guerreiro> armazenarLista = lista.getFirst();
+        Guerreiro armazenarVelho = armazenarLista.getFirst();
 
         armazenarVelho = percorrer(lista, armazenarVelho);
+      
 
         System.out.println("\nGuerreiro mais velho: ");
         System.out.println("Nome: " + armazenarVelho.getNome() + " Idade: " + armazenarVelho.getIdade() + " Peso: " + armazenarVelho.getPeso() + " Energia: " + armazenarVelho.getEnergia());
 
     }
+    
+    
+    public static void determinarVencedor(ArrayList<ArrayList<Guerreiro>> lista) {
+        System.out.println("\n=======| Determinar Vencedor |======");
 
+        System.out.println("Tamanho da lista: " + lista.size());
+
+        ArrayList<Guerreiro> listaInterna = lista.getFirst();
+        if (lista.size() == 1) {
+            System.out.println("Lista tem 1 elemento");
+        }
+        Guerreiro warrior = listaInterna.getFirst();
+
+        if (warrior instanceof Grego || warrior instanceof Nordico) {
+            System.out.println("Os vencedores são os Gregos e Nórdicos!");
+        } else {
+            System.out.println("Os vencedores são os Atlánticos e Egípcios!");
+        }
+
+    }
+    
+    
 }

@@ -12,7 +12,6 @@ import Guerreiro.Guerreiro;
  */
 public abstract class Grego extends Guerreiro{
     boolean envenenado;
-    String classe = "Grego";
   
     public Grego(String nome, int idade, double peso) {
         super(nome, idade, peso);
@@ -24,10 +23,6 @@ public abstract class Grego extends Guerreiro{
             setEnergia(100);
         }
     
-    }
-
-    public String getClasse() {
-        return classe;
     }
 
     public boolean isEnvenenado() {

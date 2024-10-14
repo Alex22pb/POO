@@ -4,6 +4,9 @@
  */
 package Guerreiro.Gregos;
 
+import Guerreiro.Guerreiro;
+import java.util.ArrayList;
+
 /**
  *
  * @author Usuario
@@ -15,9 +18,10 @@ public class ManticoraG extends Grego{
     }
         
     
-    public boolean atacar(){
-    
-        return false;
+    @Override
+    public void atacar(Guerreiro defender, ArrayList<Guerreiro> filaDefensor, ArrayList<Guerreiro> filaAtacante){
+        //inimigo.setEnergia(inimigo.getEnergia() - 35);
+        
     
     }
 }

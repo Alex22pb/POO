@@ -4,6 +4,9 @@
  */
 package Guerreiro.Atlantico;
 
+import Guerreiro.Guerreiro;
+import java.util.ArrayList;
+
 /**
  *
  * @author Usuario
@@ -15,9 +18,9 @@ public class SatiroA extends AtlanticoA{
     }
     
     @Override
-    public boolean atacar(){
-    
-        return false;
+    public void atacar(Guerreiro defender, ArrayList<Guerreiro> filaDefensor, ArrayList<Guerreiro> filaAtacante){
+        
+        
     
     }
         
