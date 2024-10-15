@@ -11,7 +11,7 @@ import Guerreiro.Guerreiro;
  * @author Usuario
  */
 public abstract class Grego extends Guerreiro{
-    boolean envenenado;
+    private boolean envenenado = false;
   
     public Grego(String nome, int idade, double peso) {
         super(nome, idade, peso);
@@ -25,10 +25,18 @@ public abstract class Grego extends Guerreiro{
     
     }
 
-    public boolean isEnvenenado() {
-        return envenenado;
+    public boolean getEnvenenado() {
+        return this.envenenado;
     }
-    
-    
-    
+  
+    public void setEnvenenado(boolean envenenado) {
+        this.envenenado = envenenado;
+    }
+
+    private void envenenado(){
+        if(envenenado == true){
+            this.setEnergia(getEnergia() - 5);
+        }
+    }
 }
+

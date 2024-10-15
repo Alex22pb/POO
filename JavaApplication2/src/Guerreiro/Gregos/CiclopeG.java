@@ -21,8 +21,15 @@ public class CiclopeG extends Grego{
     
     @Override
     public void atacar(Guerreiro defender, ArrayList<Guerreiro> filaDefensor, ArrayList<Guerreiro> filaAtacante){
-        //inimigo.setEnergia(inimigo.getEnergia() - 35);
+        this.setarEnergia();
+        defender.setEnergia(defender.getEnergia() - 35);
         
+        filaDefensor.remove(defender);
+        filaDefensor.add(defender);
+    }
     
+    @Override
+    public void morrer(Guerreiro defender, ArrayList<Guerreiro> filaDefensor){
+        filaDefensor.remove(defender);
     }
 }

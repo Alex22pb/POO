@@ -20,8 +20,54 @@ public class ManticoraG extends Grego{
     
     @Override
     public void atacar(Guerreiro defender, ArrayList<Guerreiro> filaDefensor, ArrayList<Guerreiro> filaAtacante){
-        //inimigo.setEnergia(inimigo.getEnergia() - 35);
+        this.setarEnergia();
+        
+        int danoPrincipal = 30;
+        int danoAdjacente = 15;
+        
+        defender.setEnergia(defender.getEnergia() - danoPrincipal);
+        
+        int posFila = filaDefensor.indexOf(defender);
+        
+        if(posFila == 0){
+            Guerreiro defensorAdjacente = filaDefensor.get(1);
+            defensorAdjacente.setEnergia(defensorAdjacente.getEnergia() - danoAdjacente);
+        }else if(posFila == 1){
+            if(!filaDefensor.isEmpty()){
+                Guerreiro defensorAdjacente1 = filaDefensor.get(0);
+                Guerreiro defensorAdjacente2 = filaDefensor.get(2);
+
+                defensorAdjacente1.setEnergia(defensorAdjacente1.getEnergia() - danoAdjacente);
+                defensorAdjacente2.setEnergia(defensorAdjacente2.getEnergia() - danoAdjacente);
+            }
+        }else if(posFila == 2){
+            if(!filaDefensor.isEmpty()){
+                Guerreiro defensorAdjacente1 = filaDefensor.get(1);
+                Guerreiro defensorAdjacente2 = filaDefensor.get(3);
+
+                defensorAdjacente1.setEnergia(defensorAdjacente1.getEnergia() - danoAdjacente);
+                defensorAdjacente2.setEnergia(defensorAdjacente2.getEnergia() - danoAdjacente);
+            }
+        }else if(posFila == 3){
+            if(!filaDefensor.isEmpty()){
+                Guerreiro defensorAdjacente1 = filaDefensor.get(2);
+                Guerreiro defensorAdjacente2 = filaDefensor.get(4);
+
+                defensorAdjacente1.setEnergia(defensorAdjacente1.getEnergia() - danoAdjacente);
+                defensorAdjacente2.setEnergia(defensorAdjacente2.getEnergia() - danoAdjacente);
+            }
+        }else{
+            if (!filaDefensor.isEmpty()) {
+                Guerreiro defensorAdjacente = filaDefensor.get(3);
+
+                defensorAdjacente.setEnergia(defensorAdjacente.getEnergia() - danoAdjacente);
+            }
+        }
         
     
+    }
+    
+    public void morrer(Guerreiro defender, ArrayList<Guerreiro> filaDefensor){
+        filaDefensor.remove(defender);
     }
 }

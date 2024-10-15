@@ -23,4 +23,9 @@ public class GigantePedraN extends Nordico{
     
     
     }
+    
+    @Override
+    public void morrer(Guerreiro defender, ArrayList<Guerreiro> filaDefensor){
+        filaDefensor.remove(defender);
+    }
 }

@@ -11,7 +11,7 @@ import Guerreiro.Guerreiro;
  * @author Usuario
  */
 public abstract class Nordico extends Guerreiro{
-    boolean envenenado;
+    boolean envenenado = false;
     
     public Nordico(String nome, int idade, double peso) {
         super(nome, idade, peso);
@@ -20,6 +20,12 @@ public abstract class Nordico extends Guerreiro{
     public boolean isEnvenenado() {
         return envenenado;
     }
+
+    public void setEnvenenado(boolean envenenado) {
+        this.envenenado = envenenado;
+    }
+
+    
     
     
 }

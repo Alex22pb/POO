@@ -20,8 +20,13 @@ public class ValquiriaN extends Nordico{
     
     @Override
     public void atacar(Guerreiro defender, ArrayList<Guerreiro> filaDefensor, ArrayList<Guerreiro> filaAtacante){
+        defender.setEnergia(defender.getEnergia() - 20);
+        Guerreiro curarGuerreiro = filaAtacante.get(1);
+        curarGuerreiro.setEnergia(curarGuerreiro.getEnergia() + 20);   
+    }
     
-        
-    
+    @Override
+    public void morrer(Guerreiro defender, ArrayList<Guerreiro> filaDefensor){
+        filaDefensor.remove(defender);
     }
 }

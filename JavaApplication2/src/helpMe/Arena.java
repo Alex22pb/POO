@@ -92,8 +92,7 @@ public class Arena {
         int tamVetor = VetorArena.size();
         boolean atkNG = false;
         boolean atkAE = false;
-        
-        
+             
         System.out.println("\n\n=============================== |JOGO INICIADO| ===============================\n");
         try {
             while (tamVetor > 1) {
@@ -136,7 +135,6 @@ public class Arena {
 
     }
 
-    
     public static void verificarMortos(ArrayList<ArrayList<Guerreiro>> lista) throws FimFila{
         for(int i = 0; i < lista.size(); i++){
             ArrayList<Guerreiro> ListaInterna = lista.get(i);
@@ -150,14 +148,13 @@ public class Arena {
         }
     }
     
-    public static void gerenciarMortos(Guerreiro defensor, ArrayList<Guerreiro> lista, Guerreiro atacante) throws FimFila{
-            if(defensor.getEnergia() <= 0){
-                lista.remove(defensor);
-                if(lista.isEmpty()){
-                    throw new FimFila(defensor, atacante);
-                }
+    public static void gerenciarMortos(Guerreiro defensor, ArrayList<Guerreiro> lista, Guerreiro atacante) throws FimFila {
+        if (defensor.getEnergia() <= 0){
+            defensor.morrer(defensor, lista);
+            if (lista.isEmpty()) {
+                throw new FimFila(defensor, atacante);
             }
-    
+        }
     }
     
     public static void mudarPosicoes(ArrayList<ArrayList<Guerreiro>> lista){
@@ -166,7 +163,6 @@ public class Arena {
             lista.get(i).remove(lista.get(i).getFirst());
         }
     }
-    
     
     public static int retornarTamanhoVetor(ArrayList<ArrayList<Guerreiro>> lista){
         int contAux = lista.size();

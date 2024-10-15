@@ -18,13 +18,16 @@ public class ArgusA extends AtlanticoA{
         this.setEnergia(60);    
     }
     
-    
-    
     @Override
     public void atacar(Guerreiro defender, ArrayList<Guerreiro> filaDefensor, ArrayList<Guerreiro> filaAtacante){
-    
-        
-    
+        defender.setEnergia(0);    
     }
+    
+    @Override
+    public void morrer(Guerreiro defender, ArrayList<Guerreiro> filaDefensor){
+        filaDefensor.remove(defender);
+    }
+    
+    
     
 }

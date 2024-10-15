@@ -12,16 +12,24 @@ import java.util.ArrayList;
  * @author Usuario
  */
 public class SatiroA extends AtlanticoA{
-
+    
     public SatiroA(String nome, int idade, double peso) {
         super(nome, idade, peso);
     }
+
     
     @Override
     public void atacar(Guerreiro defender, ArrayList<Guerreiro> filaDefensor, ArrayList<Guerreiro> filaAtacante){
         
+        for(Guerreiro g : filaDefensor){
+            g.setEnergia(g.getEnergia() - 10);
+        }
         
+    }
     
+    @Override
+    public void morrer(Guerreiro defender, ArrayList<Guerreiro> filaDefensor){
+        filaDefensor.remove(defender);
     }
         
 }

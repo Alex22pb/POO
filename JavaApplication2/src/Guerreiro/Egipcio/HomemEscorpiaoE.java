@@ -25,4 +25,9 @@ public class HomemEscorpiaoE extends Egipcio{
     
     }
     
+    @Override
+    public void morrer(Guerreiro defender, ArrayList<Guerreiro> filaDefensor){
+        filaDefensor.remove(defender);
+    }
+    
 }

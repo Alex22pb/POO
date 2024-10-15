@@ -24,4 +24,7 @@ public class MumiaE extends Egipcio{
         
     
     }
+    
+    public void morrer(Guerreiro defender, ArrayList<Guerreiro> filaDefensor){
+    }
 }

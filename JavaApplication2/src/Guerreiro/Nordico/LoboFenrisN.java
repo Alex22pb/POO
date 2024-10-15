@@ -12,16 +12,27 @@ import java.util.ArrayList;
  * @author Usuario
  */
 public class LoboFenrisN extends Nordico{
-
+    
     public LoboFenrisN(String nome, int idade, double peso) {
         super(nome, idade, peso);
         
     }
+
     
     @Override
-    public void atacar(Guerreiro defender, ArrayList<Guerreiro> filaDefensor, ArrayList<Guerreiro> filaAtacante){
-    
+    public void atacar(Guerreiro defender, ArrayList<Guerreiro> filaDefensor, ArrayList<Guerreiro> filaAtacante) {
+        int danobase = 40;
+        for (int i = 1; i < filaAtacante.size(); i++) {
+            if (filaAtacante.get(i) instanceof LoboFenrisN) {
+                danobase += 8;
+            }
+        }
         
+        defender.setEnergia(defender.getEnergia() - danobase);
+    }
     
+    @Override
+    public void morrer(Guerreiro defender, ArrayList<Guerreiro> filaDefensor){
+        filaDefensor.remove(defender);
     }
 }

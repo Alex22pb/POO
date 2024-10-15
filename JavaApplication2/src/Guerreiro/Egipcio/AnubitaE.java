@@ -19,8 +19,13 @@ public class AnubitaE extends Egipcio{
     
     @Override
     public void atacar(Guerreiro defender, ArrayList<Guerreiro> filaDefensor, ArrayList<Guerreiro> filaAtacante){
+        defender.setEnergia(defender.getEnergia() - 15);
+        Guerreiro ultimoDefensor = filaDefensor.get(filaDefensor.size() - 1);
+        ultimoDefensor.setEnergia(ultimoDefensor.getEnergia() - 15);    
+    }
     
-        
-    
+    @Override
+    public void morrer(Guerreiro defender, ArrayList<Guerreiro> filaDefensor){
+        filaDefensor.remove(defender);
     }
 }
