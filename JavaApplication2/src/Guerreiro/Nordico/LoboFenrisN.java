@@ -20,7 +20,11 @@ public class LoboFenrisN extends Nordico{
 
     
     @Override
-    public void atacar(Guerreiro defender, ArrayList<Guerreiro> filaDefensor, ArrayList<Guerreiro> filaAtacante) {
+    public void atacar(Guerreiro defender, ArrayList<ArrayList<Guerreiro>> lista, int posAtk, int posDef) {
+        ArrayList<Guerreiro> filaAtacante = lista.get(posAtk);
+        if (this instanceof Envenenavel) {
+            ((Envenenavel) this).aplicarEfeitoEnvenenado();
+        }
         int danobase = 40;
         for (int i = 1; i < filaAtacante.size(); i++) {
             if (filaAtacante.get(i) instanceof LoboFenrisN) {
@@ -29,10 +33,11 @@ public class LoboFenrisN extends Nordico{
         }
         
         defender.setEnergia(defender.getEnergia() - danobase);
+        System.out.println("O " + this.getClass().getSimpleName() + " " + this.getNome() + " atacou " + defender.getNome() + "\n");
     }
     
     @Override
-    public void morrer(Guerreiro defender, ArrayList<Guerreiro> filaDefensor){
-        filaDefensor.remove(defender);
+    public void morrer(Guerreiro defender, ArrayList<ArrayList<Guerreiro>> lista, int posDef){
+        lista.get(posDef).remove(defender);
     }
 }

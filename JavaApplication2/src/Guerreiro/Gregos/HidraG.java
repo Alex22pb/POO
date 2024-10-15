@@ -30,12 +30,18 @@ public class HidraG extends Grego{
     
     
     @Override
-    public void atacar(Guerreiro defender, ArrayList<Guerreiro> filaDefensor, ArrayList<Guerreiro> filaAtacante){
+    public void atacar(Guerreiro defender, ArrayList<ArrayList<Guerreiro>> lista, int posAtk, int posDef){
         this.setarEnergia();
+        
+        if (this instanceof Envenenavel) {
+            ((Envenenavel) this).aplicarEfeitoEnvenenado();
+        }
+
         int quantidadeCab = 0;
         int danoTotal = 40 + (5 * this.getQuantCabecas());
         
         defender.setEnergia(defender.getEnergia() - danoTotal);
+        System.out.println("A " + this.getClass().getSimpleName() + " "  + this.getNome() + " atacou " + defender.getNome() + "\n");
         if(defender.getEnergia() <= 0){
             quantidadeCab++;
         }
@@ -47,7 +53,7 @@ public class HidraG extends Grego{
     }
     
     @Override
-    public void morrer(Guerreiro defender, ArrayList<Guerreiro> filaDefensor){
-        filaDefensor.remove(defender);
+    public void morrer(Guerreiro defender, ArrayList<ArrayList<Guerreiro>> lista, int posDef){
+       lista.get(posDef).remove(defender);
     }
 }

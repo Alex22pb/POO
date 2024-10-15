@@ -44,10 +44,18 @@ public abstract class Guerreiro {
         this.energia = energia;
     }
 
-   
-    public abstract void atacar(Guerreiro defender, ArrayList<Guerreiro> filaDefensor, ArrayList<Guerreiro> filaAtacante);
+    public interface Envenenavel {
+        void aplicarEfeitoEnvenenado();
+    }
     
-    public abstract void morrer(Guerreiro defender, ArrayList<Guerreiro> filaDefensor);
+    public interface Provocavel {
+        void ativarProvocacao(int indiceFila, ArrayList<ArrayList<Guerreiro>> lista, int valorAtk);
+        boolean isProvocando();
+    }
+    
+    public abstract void atacar(Guerreiro defender, ArrayList<ArrayList<Guerreiro>> lista, int posAtk, int posDef);
+    
+    public abstract void morrer(Guerreiro defensor, ArrayList<ArrayList<Guerreiro>> lista, int posDef);
     
     public void imprimir() {
         System.out.println("Nome: " +this.getNome() + " Idade: " + this.getIdade() + " Peso: " + this.getPeso());

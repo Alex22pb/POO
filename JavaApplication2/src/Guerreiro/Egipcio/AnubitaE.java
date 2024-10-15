@@ -18,14 +18,25 @@ public class AnubitaE extends Egipcio{
     }
     
     @Override
-    public void atacar(Guerreiro defender, ArrayList<Guerreiro> filaDefensor, ArrayList<Guerreiro> filaAtacante){
-        defender.setEnergia(defender.getEnergia() - 15);
-        Guerreiro ultimoDefensor = filaDefensor.get(filaDefensor.size() - 1);
-        ultimoDefensor.setEnergia(ultimoDefensor.getEnergia() - 15);    
+    public void atacar(Guerreiro defender, ArrayList<ArrayList<Guerreiro>> lista, int posAtk, int posDef){
+        if (((Egipcio)this).isProvocando()) {
+            defender = lista.get(this.getIndiceQueProvocou()).getFirst();
+            this.ativarProvocacao(this.getIndiceQueProvocou(), lista, 15);
+            System.out.println("O " + this.getClass().getSimpleName() + " " + this.getNome() + " atacou " + defender.getNome() + "\n");
+        }else{
+            ArrayList<Guerreiro> filaDefensor = lista.get(posDef);
+
+            defender.setEnergia(defender.getEnergia() - 15);
+            System.out.println("O " + this.getClass().getSimpleName() + " " + this.getNome() + " atacou " + defender.getNome() + "\n");
+            Guerreiro ultimoDefensor = filaDefensor.getLast();
+            ultimoDefensor.setEnergia(ultimoDefensor.getEnergia() - 15);
+            System.out.println("O " + this.getClass().getSimpleName() + " " + this.getNome() + " atacou " + ultimoDefensor.getNome() + "\n");
+        }
+
     }
     
     @Override
-    public void morrer(Guerreiro defender, ArrayList<Guerreiro> filaDefensor){
-        filaDefensor.remove(defender);
+    public void morrer(Guerreiro defender, ArrayList<ArrayList<Guerreiro>> lista, int posDef){
+        lista.get(posDef).remove(defender);
     }
 }

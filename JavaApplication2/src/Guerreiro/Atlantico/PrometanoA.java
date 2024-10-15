@@ -19,26 +19,47 @@ public class PrometanoA extends AtlanticoA{
 
 
     @Override
-    public void atacar(Guerreiro defender, ArrayList<Guerreiro> filaDefensor, ArrayList<Guerreiro> filaAtacante){
-        defender.setEnergia(defender.getEnergia() - 10);
+    public void atacar(Guerreiro defender, ArrayList<ArrayList<Guerreiro>> lista, int posAtk, int posDef){
+        if (((AtlanticoA) this).isProvocando()) {
+            defender = lista.get(this.getIndiceQueProvocou()).getFirst();
+            this.ativarProvocacao(this.getIndiceQueProvocou(), lista, 10);
+            System.out.println("O " + this.getClass().getSimpleName() + " " + this.getNome() + " atacou " + defender.getNome() + "\n");
+        } else {
+            defender.setEnergia(defender.getEnergia() - 10);
+            System.out.println("O " + this.getClass().getSimpleName() + " " + this.getNome() + " atacou " + defender.getNome() + "\n");
+        }
     }
         
     
     @Override
-    public void morrer(Guerreiro defender, ArrayList<Guerreiro> filaDefensor){
+    public void morrer(Guerreiro defender, ArrayList<ArrayList<Guerreiro>> lista, int posDef){
+        ArrayList<Guerreiro> filaDefensor = lista.get(posDef);
         if(defender.getEnergia() < 1 && defender.getEnergia() <= 0 ){
-            Guerreiro filho1 = new PrometanoA(defender.getNome() + "1", defender.getIdade(), defender.getPeso());
-            Guerreiro filho2 = new PrometanoA(defender.getNome() + "2", defender.getIdade(), defender.getPeso());
-            
-            filho1.setEnergia(filho1.getEnergia()/2);
-            filho1.setEnergia(filho2.getEnergia()/2);
-            
-            filaDefensor.add(filho1);
-            filaDefensor.add(filho2);
-            filaDefensor.remove(defender);
-            
+            int indiceString = defender.getNome().length();
+            if (defender.getNome().charAt(indiceString - 1) == '1' || defender.getNome().charAt(indiceString - 1) == '2') {
+                Guerreiro filho1 = new PrometanoA(defender.getNome() + ".1", defender.getIdade(), defender.getPeso());
+                Guerreiro filho2 = new PrometanoA(defender.getNome() + ".2", defender.getIdade(), defender.getPeso());
+
+                filho1.setEnergia(filho1.getEnergia() / 2);
+                filho1.setEnergia(filho2.getEnergia() / 2);
+
+                filaDefensor.add(filho1);
+                filaDefensor.add(filho2);
+                filaDefensor.remove(defender);
+            } else {
+                Guerreiro filho1 = new PrometanoA(defender.getNome() + "1", defender.getIdade(), defender.getPeso());
+                Guerreiro filho2 = new PrometanoA(defender.getNome() + "2", defender.getIdade(), defender.getPeso());
+
+                filho1.setEnergia(filho1.getEnergia() / 2);
+                filho1.setEnergia(filho2.getEnergia() / 2);
+
+                filaDefensor.add(filho1);
+                filaDefensor.add(filho2);
+                filaDefensor.remove(defender);
+            }
+  
         }else if(defender.getEnergia() <=0 || defender.getEnergia() == 1){
-            filaDefensor.remove(defender);
+            defender.setEnergia(0);
         }
     
     }

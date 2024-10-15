@@ -19,55 +19,75 @@ public class ManticoraG extends Grego{
         
     
     @Override
-    public void atacar(Guerreiro defender, ArrayList<Guerreiro> filaDefensor, ArrayList<Guerreiro> filaAtacante){
+    public void atacar(Guerreiro defender, ArrayList<ArrayList<Guerreiro>> lista, int posAtk, int posDef){
         this.setarEnergia();
+        
+        if (this instanceof Envenenavel) {
+            ((Envenenavel) this).aplicarEfeitoEnvenenado();
+        }
+
+        ArrayList<Guerreiro> filaDefensor = lista.get(posDef);
         
         int danoPrincipal = 30;
         int danoAdjacente = 15;
         
         defender.setEnergia(defender.getEnergia() - danoPrincipal);
+        System.out.println("A " + this.getClass().getSimpleName() + " "  + this.getNome() + " atacou " + defender.getNome() + "\n");
         
-        int posFila = filaDefensor.indexOf(defender);
+        int posFila = lista.indexOf(filaDefensor);
         
-        if(posFila == 0){
-            Guerreiro defensorAdjacente = filaDefensor.get(1);
-            defensorAdjacente.setEnergia(defensorAdjacente.getEnergia() - danoAdjacente);
-        }else if(posFila == 1){
-            if(!filaDefensor.isEmpty()){
-                Guerreiro defensorAdjacente1 = filaDefensor.get(0);
-                Guerreiro defensorAdjacente2 = filaDefensor.get(2);
-
-                defensorAdjacente1.setEnergia(defensorAdjacente1.getEnergia() - danoAdjacente);
-                defensorAdjacente2.setEnergia(defensorAdjacente2.getEnergia() - danoAdjacente);
+        if(posFila == 4){
+            if (!lista.get(posFila + 1).isEmpty()) {
+                Guerreiro defensorAdjacente = lista.get(posFila + 1 ).getFirst();
+                defensorAdjacente.setEnergia(defensorAdjacente.getEnergia() - danoAdjacente);
+                System.out.println("A " + this.getClass().getSimpleName() + " " + this.getNome() + " atacou " + defensorAdjacente.getNome());
             }
-        }else if(posFila == 2){
-            if(!filaDefensor.isEmpty()){
-                Guerreiro defensorAdjacente1 = filaDefensor.get(1);
-                Guerreiro defensorAdjacente2 = filaDefensor.get(3);
-
-                defensorAdjacente1.setEnergia(defensorAdjacente1.getEnergia() - danoAdjacente);
+        }else if(posFila == 5){
+            if(!lista.get(posFila + 1).isEmpty()){
+                Guerreiro defensorAdjacente2 = lista.get(posFila + 1 ).getFirst();
                 defensorAdjacente2.setEnergia(defensorAdjacente2.getEnergia() - danoAdjacente);
+                System.out.println("A " + this.getClass().getSimpleName() + " " + this.getNome() + " atacaou " + defensorAdjacente2.getNome());
+            }
+            
+            if(!lista.get(posFila - 1).isEmpty()){
+                Guerreiro defensorAdjacente1 = lista.get(posFila - 1 ).getFirst();
+                defensorAdjacente1.setEnergia(defensorAdjacente1.getEnergia() - danoAdjacente);
+                System.out.println("A " + this.getClass().getSimpleName() + " " + this.getNome() + " atacaou " + defensorAdjacente1.getNome());
+            }
+        }else if(posFila == 6){
+            if(!lista.get(posFila + 1).isEmpty()){
+                Guerreiro defensorAdjacente2 = lista.get(posFila + 1 ).getFirst();
+                defensorAdjacente2.setEnergia(defensorAdjacente2.getEnergia() - danoAdjacente);
+                System.out.println("A " + this.getClass().getSimpleName() + " " + this.getNome() + " atacaou " + defensorAdjacente2.getNome());
+            }
+            
+            if(!lista.get(posFila - 1).isEmpty()){
+                Guerreiro defensorAdjacente1 = lista.get(posFila - 1 ).getFirst();
+                defensorAdjacente1.setEnergia(defensorAdjacente1.getEnergia() - danoAdjacente);
+                System.out.println("A " + this.getClass().getSimpleName() + " " + this.getNome() + " atacaou " + defensorAdjacente1.getNome());
             }
         }else if(posFila == 3){
-            if(!filaDefensor.isEmpty()){
-                Guerreiro defensorAdjacente1 = filaDefensor.get(2);
-                Guerreiro defensorAdjacente2 = filaDefensor.get(4);
-
-                defensorAdjacente1.setEnergia(defensorAdjacente1.getEnergia() - danoAdjacente);
+            if(!lista.get(posFila + 1).isEmpty()){
+                Guerreiro defensorAdjacente2 = lista.get(posFila + 1 ).getFirst();
                 defensorAdjacente2.setEnergia(defensorAdjacente2.getEnergia() - danoAdjacente);
+                System.out.println("A " + this.getClass().getSimpleName() + " " + this.getNome() + " atacaou " + defensorAdjacente2.getNome());
+            }
+            
+            if(!lista.get(posFila - 1).isEmpty()){
+                Guerreiro defensorAdjacente1 = lista.get(posFila - 1 ).getFirst();
+                defensorAdjacente1.setEnergia(defensorAdjacente1.getEnergia() - danoAdjacente);
+                System.out.println("A " + this.getClass().getSimpleName() + " " + this.getNome() + " atacaou " + defensorAdjacente1.getNome());
             }
         }else{
-            if (!filaDefensor.isEmpty()) {
-                Guerreiro defensorAdjacente = filaDefensor.get(3);
-
+           if(!lista.get(posFila - 1).isEmpty()){
+                Guerreiro defensorAdjacente = lista.get(posFila - 1 ).getFirst();
                 defensorAdjacente.setEnergia(defensorAdjacente.getEnergia() - danoAdjacente);
+                System.out.println("A " + this.getClass().getSimpleName() + " " + this.getNome() + " atacaou " + defensorAdjacente.getNome());
             }
         }
-        
-    
     }
     
-    public void morrer(Guerreiro defender, ArrayList<Guerreiro> filaDefensor){
-        filaDefensor.remove(defender);
+    public void morrer(Guerreiro defender, ArrayList<ArrayList<Guerreiro>> lista, int posDef){
+        lista.get(posDef).remove(defender);
     }
 }

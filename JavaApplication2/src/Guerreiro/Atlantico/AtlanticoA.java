@@ -5,21 +5,45 @@
 package Guerreiro.Atlantico;
 
 import Guerreiro.Guerreiro;
+import Guerreiro.Guerreiro.Provocavel;
+import java.util.ArrayList;
 
 /**
  *
  * @author Usuario
  */
-public abstract class AtlanticoA extends Guerreiro{
-    boolean forcarSerAtk;
-    
+public abstract class AtlanticoA extends Guerreiro implements Provocavel {
+
+    boolean forcarSerAtk = false;
+    int indiceQueProvocou = -1;
+
     public AtlanticoA(String nome, int idade, double peso) {
         super(nome, idade, peso);
-    } 
+    }
 
-    public boolean isForcarSerAtk() {
+    @Override
+     public void ativarProvocacao(int indiceFila, ArrayList<ArrayList<Guerreiro>> lista, int valorAtk ) {
+        Guerreiro defender = lista.get(indiceFila).getFirst();
+        defender.setEnergia(defender.getEnergia() - valorAtk);
+    }
+
+    @Override
+    public boolean isProvocando() {
         return forcarSerAtk;
     }
+
+    public void setForcarSerAtk(boolean forcarSerAtk) {
+        this.forcarSerAtk = forcarSerAtk;
+    }
+    
+    public int getIndiceQueProvocou() {
+        return indiceQueProvocou;
+    }
+    
+    public void setIndiceQueProvocou(int indiceQueProvocou) {
+        this.indiceQueProvocou = indiceQueProvocou;
+    }
+
     
     
 }

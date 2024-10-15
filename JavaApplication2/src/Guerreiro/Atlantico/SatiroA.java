@@ -19,17 +19,25 @@ public class SatiroA extends AtlanticoA{
 
     
     @Override
-    public void atacar(Guerreiro defender, ArrayList<Guerreiro> filaDefensor, ArrayList<Guerreiro> filaAtacante){
-        
-        for(Guerreiro g : filaDefensor){
-            g.setEnergia(g.getEnergia() - 10);
+    public void atacar(Guerreiro defender, ArrayList<ArrayList<Guerreiro>> lista, int posAtk, int posDef) {
+
+        if (((AtlanticoA) this).isProvocando()) {
+            defender = lista.get(this.getIndiceQueProvocou()).getFirst();
+            this.ativarProvocacao(this.getIndiceQueProvocou(), lista, 10);
+        } else {
+            ArrayList<Guerreiro> filaDefensor = lista.get(posDef);
+
+            for (Guerreiro g : filaDefensor) {
+                g.setEnergia(g.getEnergia() - 10);
+                System.out.println("O " + this.getClass().getSimpleName() + " " + this.getNome() + " atacou " + g.getNome() + "\n");
+            }
         }
-        
+
     }
     
     @Override
-    public void morrer(Guerreiro defender, ArrayList<Guerreiro> filaDefensor){
-        filaDefensor.remove(defender);
+    public void morrer(Guerreiro defender, ArrayList<ArrayList<Guerreiro>> lista, int posDef){
+        lista.get(posDef).remove(defender);
     }
         
 }

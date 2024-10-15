@@ -5,12 +5,13 @@
 package Guerreiro.Gregos;
 
 import Guerreiro.Guerreiro;
+import Guerreiro.Guerreiro.Envenenavel;
 
 /**
  *
  * @author Usuario
  */
-public abstract class Grego extends Guerreiro{
+public abstract class Grego extends Guerreiro implements Envenenavel{
     private boolean envenenado = false;
   
     public Grego(String nome, int idade, double peso) {
@@ -22,21 +23,23 @@ public abstract class Grego extends Guerreiro{
         if(getEnergia()  > 100){
             setEnergia(100);
         }
-    
     }
 
-    public boolean getEnvenenado() {
-        return this.envenenado;
+    public boolean isEnvenenado() {
+        return envenenado;
     }
   
     public void setEnvenenado(boolean envenenado) {
         this.envenenado = envenenado;
     }
 
-    private void envenenado(){
-        if(envenenado == true){
-            this.setEnergia(getEnergia() - 5);
+    @Override
+    public void aplicarEfeitoEnvenenado() {
+        if (this.envenenado) {
+            this.setEnergia(this.getEnergia() - 5);
+            System.out.println(this.getNome() + " perdeu 5 de energia devido ao veneno!");
         }
     }
+
 }
 

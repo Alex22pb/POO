@@ -96,12 +96,15 @@ public class Arena {
         System.out.println("\n\n=============================== |JOGO INICIADO| ===============================\n");
         try {
             while (tamVetor > 1) {
-                if (Sorteio.realizarSorteio() == 1) {
+                int numSorteio = Sorteio.realizarSorteio();
+                System.out.println(numSorteio);
+                if (numSorteio == 1) {
                     if (atkNG == true) {
                         mudarPosicoes(VetorArena);
                         atkNG = false;
                     }
                     if (atkNG == false) {
+                        System.out.println("=======|ATAQUE DOS GREGOS E NÓRDICOS|======");
                         chamarAtaqueNG(VetorArena);
                         atkNG = true;
                         verificarMortos(VetorArena);
@@ -112,6 +115,7 @@ public class Arena {
                         atkAE = false;
                     }
                     if (atkAE == false) {
+                        System.out.println("=======|ATAQUE DOS ATLÁTICOS E EGÍPCIOS|======");
                         chamarAtaqueAE(VetorArena);
                         atkAE = true;
                         verificarMortos(VetorArena);
@@ -119,7 +123,7 @@ public class Arena {
                     }
 
                 }
-
+                
                 tamVetor = retornarTamanhoVetor(VetorArena);
             }
         } catch (FimFila ex) {
@@ -140,18 +144,26 @@ public class Arena {
             ArrayList<Guerreiro> ListaInterna = lista.get(i);
             for(int j = 0; j < ListaInterna.size(); j++){
                 if(i < 4){
-                    gerenciarMortos(ListaInterna.get(j), ListaInterna, lista.get(i+4).get(ListaInterna.size()));
+                    int posDefesa = i+4;
+                    if(lista.get(i + 4).isEmpty()){
+                        posDefesa = encontrarDefensorEA(ListaInterna);
+                    }
+                    gerenciarMortos(ListaInterna.get(j), lista, i, lista.get(posDefesa).getFirst());
                 }else{
-                    gerenciarMortos(ListaInterna.get(j), ListaInterna, lista.get(i-4).get(ListaInterna.size()));
+                    int posDefesa = lista.size() - i;
+                    if(lista.get(posDefesa).isEmpty()){
+                        posDefesa = encontrarDefensorGN(ListaInterna);
+                    }
+                    gerenciarMortos(ListaInterna.get(j), lista, i, lista.get(posDefesa).getFirst());
                 }
             }
         }
     }
     
-    public static void gerenciarMortos(Guerreiro defensor, ArrayList<Guerreiro> lista, Guerreiro atacante) throws FimFila {
+    public static void gerenciarMortos(Guerreiro defensor, ArrayList<ArrayList<Guerreiro>> lista, int posDef, Guerreiro atacante) throws FimFila {
         if (defensor.getEnergia() <= 0){
-            defensor.morrer(defensor, lista);
-            if (lista.isEmpty()) {
+            defensor.morrer(defensor, lista, posDef);
+            if (lista.size() <= 1) {
                 throw new FimFila(defensor, atacante);
             }
         }
@@ -175,7 +187,6 @@ public class Arena {
     }
 
     private static void chamarAtaqueNG(ArrayList<ArrayList<Guerreiro>> lista) {
-        System.out.println("=======|ATAQUE|======");
 
         for (int i = 0; i < 4; i++) {
 
@@ -187,7 +198,7 @@ public class Arena {
                 }
                 Guerreiro defensor = lista.get(posDefensor).getFirst();
                 
-                atacante.atacar(defensor, lista.get(posDefensor), lista.get(i));
+                atacante.atacar(defensor, lista, i, posDefensor);
 
             }
         }
@@ -208,9 +219,8 @@ public class Arena {
     
     
     private static void chamarAtaqueAE(ArrayList<ArrayList<Guerreiro>> lista) {
-        System.out.println("=======|ATAQUE|======");
-
-        for (int i = lista.size(); i >= lista.size()/2; i--) {
+ 
+        for (int i = lista.size()/2; i > lista.size(); i++) {
 
             if (!lista.get(i).isEmpty()) {
                 int posDefensor = i-4;
@@ -220,7 +230,7 @@ public class Arena {
                 }
                 Guerreiro defensor = lista.get(posDefensor).getFirst();
                 
-                atacante.atacar(defensor, lista.get(posDefensor), lista.get(i));
+                atacante.atacar(defensor, lista, i, posDefensor);
 
             }
         }
