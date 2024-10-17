@@ -40,7 +40,7 @@ public class GigantePedraN extends Nordico{
                 System.out.println("O " + this.getClass().getSimpleName() + " " + this.getNome() + " atacou " + defender.getNome() + "\n");
                 
                 for (int i = lista.size() / 2; i < lista.size(); i++) {
-                    defender = lista.get(i).getFirst();
+                    defender = lista.get(i).get(0);
                     if (defender instanceof AtlanticoA atlas) {
                         if (!atlas.isProvocando()) {
                             atlas.setForcarSerAtk(true);

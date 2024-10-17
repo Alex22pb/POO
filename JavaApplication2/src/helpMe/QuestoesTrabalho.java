@@ -18,6 +18,22 @@ public class QuestoesTrabalho {
 
     private static Guerreiro g_dead;
     private static Guerreiro atacante;
+
+    public static Guerreiro getG_dead() {
+        return g_dead;
+    }
+
+    public static void setG_dead(Guerreiro g_dead) {
+        QuestoesTrabalho.g_dead = g_dead;
+    }
+
+    public static Guerreiro getAtacante() {
+        return atacante;
+    }
+
+    public static void setAtacante(Guerreiro atacante) {
+        QuestoesTrabalho.atacante = atacante;
+    }
     
     public static void exibirDadosGuerreiros(ArrayList<ArrayList<Guerreiro>> lista) {
         int i = 0;
@@ -57,8 +73,8 @@ public class QuestoesTrabalho {
     }
 
     public static void maisVelho(ArrayList<ArrayList<Guerreiro>> lista) {
-        ArrayList<Guerreiro> armazenarLista = lista.getFirst();
-        Guerreiro armazenarVelho = armazenarLista.getFirst();
+        ArrayList<Guerreiro> armazenarLista = lista.get(0);
+        Guerreiro armazenarVelho = armazenarLista.get(0);
 
         armazenarVelho = percorrer(lista, armazenarVelho);
       
@@ -69,8 +85,8 @@ public class QuestoesTrabalho {
     }
     
     public static void morreuMatou(Guerreiro morreu, Guerreiro matou){
-        QuestoesTrabalho.g_dead = morreu;
-        QuestoesTrabalho.atacante = matou;
+        setG_dead(morreu);
+        setAtacante(matou);
     }
     
     public static void ultimoMorreuUltimoAtk(){
@@ -86,7 +102,7 @@ public class QuestoesTrabalho {
         }
          
         System.out.println("=====| Dados do Ultimo A Atacar| =====");
-        System.out.println("Nome: " + atacante.getNome() + "\nIdade: " + atacante.getIdade() + "\nPeso: " + atacante.getPeso() + " no " 
+        System.out.println("O " + atacante.getClass().getSimpleName() + " de nome " + atacante.getNome() + " idade " + atacante.getIdade() + " e peso " + atacante.getPeso() + ", deu o ultimo golpe no " 
                 + g_dead.getClass().getSimpleName() + " " + g_dead.getNome()
                 + " de " + g_dead.getIdade() + " anos e " + g_dead.getPeso());
         
@@ -95,18 +111,18 @@ public class QuestoesTrabalho {
     }
     
     
-    public static void determinarVencedor(ArrayList<ArrayList<Guerreiro>> lista) {
+    public static void determinarVencedor() {
         System.out.println("\n=======| Determinar Vencedor |======");
 
-        System.out.println("Tamanho da lista: " + lista.size());
+//        System.out.println("Tamanho da lista: " + lista.size());
+//
+//        ArrayList<Guerreiro> listaInterna = lista.get(0);
+//        if (lista.size() == 1) {
+//            System.out.println("Lista tem 1 elemento");
+//        }
+//        Guerreiro warrior = listaInterna.get(0);
 
-        ArrayList<Guerreiro> listaInterna = lista.getFirst();
-        if (lista.size() == 1) {
-            System.out.println("Lista tem 1 elemento");
-        }
-        Guerreiro warrior = listaInterna.getFirst();
-
-        if (warrior instanceof Grego || warrior instanceof Nordico) {
+        if (getAtacante() instanceof Grego || getAtacante() instanceof Nordico) {
             System.out.println("Os vencedores são os Gregos e Nórdicos!");
         } else {
             System.out.println("Os vencedores são os Atlánticos e Egípcios!");

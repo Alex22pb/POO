@@ -91,28 +91,30 @@ public class Arena {
 
     public static void comecarBatalha() {
 
-        int tamVetor = VetorArena.size();
+//        int tamVetor = VetorArena.size();
         boolean atkNG = false;
         boolean atkAE = false;
+        boolean fimDaPartida = false;
 
         System.out.println("\n\n=============================== |JOGO INICIADO| ===============================\n");
         //try {
-        while (tamVetor > 1) {
-            int numSorteio = Sorteio.realizarSorteio();
-            System.out.println(numSorteio);
-            if (numSorteio == 1) {
+        while (!fimDaPartida) {
+//            int numSorteio = Sorteio.realizarSorteio();
+//            System.out.println(numSorteio);
+            if (Sorteio.realizarSorteio() == 1) {
                 if (atkNG == true) {
                     mudarPosicoes(VetorArena);
                     atkNG = false;
                 }
                 if (atkNG == false) {
                     System.out.println("=======|ATAQUE DOS GREGOS E NÓRDICOS|======\n");
-                    chamarAtaqueNG(VetorArena);
+                    fimDaPartida = chamarAtaqueNG(VetorArena);
                     atkNG = true;
                     if (atkAE == true) {
                         atkAE = false;
                     }
                     verificarMortos(VetorArena);
+                    fimDaPartida = retornarTamanhoVetor(VetorArena);
                 }
             } else {
                 if (atkAE == true) {
@@ -121,29 +123,30 @@ public class Arena {
                 }
                 if (atkAE == false) {
                     System.out.println("=======|ATAQUE DOS ATLÁTICOS E EGÍPCIOS|======\n");
-                    chamarAtaqueAE(VetorArena);
+                    fimDaPartida = chamarAtaqueAE(VetorArena);
                     atkAE = true;
                     if (atkNG == true) {
                         atkNG = false;
                     }
                     verificarMortos(VetorArena);
+                    fimDaPartida = retornarTamanhoVetor(VetorArena);
 
                 }
 
             }
 
-            tamVetor = retornarTamanhoVetor(VetorArena);
+//            tamVetor = retornarTamanhoVetor(VetorArena);
         }
 //        } catch (FimFila ex) {
 //            ex.Imprimir();
 //        }
 
         System.out.println("\n\n=============================== |FIM DA PARTIDA| ===============================\n");
-        for (int i = 0; i < VetorArena.size(); i++) {
-            if (VetorArena.get(i).isEmpty()) {
-                VetorArena.remove(i);
-            }
-        }
+//        for (int i = 0; i < VetorArena.size(); i++) {
+//            if (VetorArena.get(i).isEmpty()) {
+//                VetorArena.remove(i);
+//            }
+//        }
 
     }
 
@@ -232,7 +235,7 @@ public static void verificarMortos(ArrayList<ArrayList<Guerreiro>> lista){
         }
     }
     
-    public static int retornarTamanhoVetor(ArrayList<ArrayList<Guerreiro>> lista) {
+    public static boolean retornarTamanhoVetor(ArrayList<ArrayList<Guerreiro>> lista) {
         int contNG = 0;
         int contAE = 0;
         for (int i = 0; i < lista.size()/2; i++) {
@@ -248,37 +251,45 @@ public static void verificarMortos(ArrayList<ArrayList<Guerreiro>> lista){
         }
         
         if(contAE == 0 || contNG == 0){
-            return 1;
+            return true;
         }else{
-            return contAE+contNG;
+            return false;
         }
     }
 
-    private static void chamarAtaqueNG(ArrayList<ArrayList<Guerreiro>> lista) {
+    private static boolean chamarAtaqueNG(ArrayList<ArrayList<Guerreiro>> lista) {
 
         for (int i = 0; i < 4; i++) {
 
             if (!lista.get(i).isEmpty()) {
                 int posDefensor = i+4;
-                Guerreiro atacante = lista.get(i).getFirst();
+                Guerreiro atacante = lista.get(i).get(0);
                 if(lista.get(i+4).isEmpty()){
                     posDefensor = encontrarDefensorEA(lista.get(i+4));
                 }
-                Guerreiro defensor = lista.get(posDefensor).getFirst();
                 
-                atacante.atacar(defensor, lista, i, posDefensor);
-
+                if(posDefensor >= 4 && posDefensor < lista.size()){
+                    Guerreiro defensor = lista.get(posDefensor).get(0);
+                    atacante.atacar(defensor, lista, i, posDefensor);
+                
+                }else{
+                    return true;
+                }
             }
         }
-
+        return false;
     }
     
     private static int encontrarDefensorEA(ArrayList<Guerreiro> ListaDefensor){
         int posicao = VetorArena.indexOf(ListaDefensor);
+        boolean reset = false;
         while (ListaDefensor.isEmpty()) {
             posicao = (posicao % 4) + 4; // Ciclo entre as filas do lado 2 (5 a 8)
-            if(posicao > VetorArena.size()){
+            if(posicao > VetorArena.size() && !reset){
                 posicao = VetorArena.size() / 2;
+                reset = true;
+            }else if(posicao > VetorArena.size() && reset){
+                return -1;
             }else{
                 ListaDefensor = VetorArena.get(posicao);
                 if(ListaDefensor.isEmpty()){
@@ -291,31 +302,41 @@ public static void verificarMortos(ArrayList<ArrayList<Guerreiro>> lista){
     }
     
     
-    private static void chamarAtaqueAE(ArrayList<ArrayList<Guerreiro>> lista) {
+    private static boolean chamarAtaqueAE(ArrayList<ArrayList<Guerreiro>> lista) {
  
         for (int i = lista.size()/2; i < lista.size(); i++) {
 
             if (!lista.get(i).isEmpty()) {
                 int posDefensor = i-4;
-                Guerreiro atacante = lista.get(i).getFirst();
+                Guerreiro atacante = lista.get(i).get(0);
                 if(lista.get(i-4).isEmpty()){
                     posDefensor = encontrarDefensorGN(lista.get(i-4));
                 }
-                Guerreiro defensor = lista.get(posDefensor).getFirst();
+                if(posDefensor >= 0 && posDefensor < 4){
+                    Guerreiro defensor = lista.get(posDefensor).get(0);
                 
-                atacante.atacar(defensor, lista, i, posDefensor);
+                    atacante.atacar(defensor, lista, i, posDefensor);
+
+                }else{
+                    return true;
+                }
 
             }
         }
+        return false;
 
     }
     
     private static int encontrarDefensorGN(ArrayList<Guerreiro> ListaDefensor){
         int posicao = VetorArena.indexOf(ListaDefensor);
+        boolean reset = false;
         while (ListaDefensor.isEmpty()) {
             //posicao = (posicao % 4) - 4; // Ciclo entre as filas do lado 1 (1 a 4)
-            if(posicao > 4){
+            if(posicao > 4 && !reset){
                 posicao = 0;
+                reset = true;
+            }else if(posicao > 4 && reset){
+                return -1;
             }else{
                 ListaDefensor = VetorArena.get(posicao);
                 if(ListaDefensor.isEmpty()){

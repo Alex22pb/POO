@@ -26,7 +26,7 @@ public class PrometanoA extends AtlanticoA{
         } else {
             QuestoesTrabalho.morreuMatou(this, defender);
             if (((AtlanticoA) this).isProvocando()) {
-                defender = lista.get(this.getIndiceQueProvocou()).getFirst();
+                defender = lista.get(this.getIndiceQueProvocou()).get(0);
                 this.ativarProvocacao(this.getIndiceQueProvocou(), lista, 10);
                 System.out.println("O " + this.getClass().getSimpleName() + " " + this.getNome() + " atacou " + defender.getNome() + "\n");
                 if (defender.getEnergia() <= 0) {

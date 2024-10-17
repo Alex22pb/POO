@@ -47,7 +47,7 @@ public class AnubitaE extends Egipcio{
                 if (defender.getEnergia() <= 0) {
                     defender.morrer(defender, lista, posDef);
                 }
-                if (filaDefensor.get(filaDefensor.size() - 1) != null) {
+                if (!filaDefensor.isEmpty()) {
                     Guerreiro ultimoDefensor = filaDefensor.get(filaDefensor.size() - 1);
                     ultimoDefensor.setEnergia(ultimoDefensor.getEnergia() - 15);
                     System.out.println("O " + this.getClass().getSimpleName() + " " + this.getNome() + " atacou " + ultimoDefensor.getNome() + "\n");

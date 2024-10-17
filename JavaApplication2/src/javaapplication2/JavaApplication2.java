@@ -28,8 +28,9 @@ public class JavaApplication2 {
         QuestoesTrabalho.maisVelho(Arena.getArena());
 
         Arena.comecarBatalha();
+        QuestoesTrabalho.determinarVencedor();
         QuestoesTrabalho.ultimoMorreuUltimoAtk();
-        QuestoesTrabalho.determinarVencedor(Arena.getArena());
+//        QuestoesTrabalho.determinarVencedor(Arena.getArena());
         
 //            
 

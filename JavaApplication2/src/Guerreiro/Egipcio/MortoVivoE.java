@@ -25,7 +25,7 @@ public class MortoVivoE extends Egipcio{
         } else {
             QuestoesTrabalho.morreuMatou(this, defender);
             if (((Egipcio) this).isProvocando()) {
-                defender = lista.get(this.getIndiceQueProvocou()).getFirst();
+                defender = lista.get(this.getIndiceQueProvocou()).get(0);
                 this.ativarProvocacao(this.getIndiceQueProvocou(), lista, 5);
                 System.out.println("O " + this.getClass().getSimpleName() + " " + this.getNome() + " atacou " + defender.getNome() + "\n");
                 if (defender.getEnergia() <= 0) {
