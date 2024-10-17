@@ -5,6 +5,7 @@
 package Guerreiro.Egipcio;
 
 import Guerreiro.Guerreiro;
+import helpMe.QuestoesTrabalho;
 import java.util.ArrayList;
 
 /**
@@ -20,21 +21,29 @@ public class MumiaE extends Egipcio{
     
     @Override
     public void atacar(Guerreiro defender, ArrayList<ArrayList<Guerreiro>> lista, int posAtk, int posDef) {
-        if (((Egipcio) this).isProvocando()) {
-            defender = lista.get(this.getIndiceQueProvocou()).getFirst();
-            this.ativarProvocacao(this.getIndiceQueProvocou(), lista, 50);
-             if (defender.getEnergia() <= 0) {
-                Guerreiro Zumbi = new MortoVivoE(defender.getNome(), defender.getIdade(), defender.getPeso());
-                lista.get(posAtk).add(Zumbi);
-            }
-            System.out.println("A " + this.getClass().getSimpleName() + " " + this.getNome() + " atacou " + defender.getNome() + "\n");
+        if (defender.getEnergia() <= 0) {
+            defender.morrer(defender, lista, posDef);
         } else {
-            defender.setEnergia(defender.getEnergia() - 50);
-            if (defender.getEnergia() <= 0) {
-                Guerreiro Zumbi = new MortoVivoE(defender.getNome(), defender.getIdade(), defender.getPeso());
-                lista.get(posAtk).add(Zumbi);
+            QuestoesTrabalho.morreuMatou(this, defender);
+            if (((Egipcio) this).isProvocando()) {
+                defender = lista.get(this.getIndiceQueProvocou()).getFirst();
+                this.ativarProvocacao(this.getIndiceQueProvocou(), lista, 50);
+                System.out.println("A " + this.getClass().getSimpleName() + " " + this.getNome() + " atacou " + defender.getNome() + "\n");
+                if (defender.getEnergia() <= 0) {
+                    Guerreiro Zumbi = new MortoVivoE(defender.getNome(), defender.getIdade(), defender.getPeso());
+                    lista.get(posAtk).add(Zumbi);
+                    defender.morrer(defender, lista, this.getIndiceQueProvocou());
+                }
+            } else {
+                defender.setEnergia(defender.getEnergia() - 50);
+                System.out.println("A " + this.getClass().getSimpleName() + " " + this.getNome() + " atacou " + defender.getNome() + "\n");
+                if (defender.getEnergia() <= 0) {
+                    Guerreiro Zumbi = new MortoVivoE(defender.getNome(), defender.getIdade(), defender.getPeso());
+                    lista.get(posAtk).add(Zumbi);
+                    defender.morrer(defender, lista, posDef);
+                }
+                
             }
-            System.out.println("A " + this.getClass().getSimpleName() + " " + this.getNome() + " atacou " + defender.getNome() + "\n");
         }
     }
     

@@ -5,6 +5,7 @@
 package Guerreiro.Nordico;
 
 import Guerreiro.Guerreiro;
+import helpMe.QuestoesTrabalho;
 import java.util.ArrayList;
 
 /**
@@ -20,15 +21,29 @@ public class ValquiriaN extends Nordico{
     
     @Override
     public void atacar(Guerreiro defender, ArrayList<ArrayList<Guerreiro>> lista, int posAtk, int posDef) {
-        ArrayList<Guerreiro> filaAtacante = lista.get(posAtk);
+
         if (this instanceof Envenenavel) {
             ((Envenenavel) this).aplicarEfeitoEnvenenado();
         }
-        defender.setEnergia(defender.getEnergia() - 20);
-        System.out.println("" + this.getNome() + " atacou " + defender.getNome() + "\n");
-        Guerreiro curarGuerreiro = filaAtacante.get(1);
-        curarGuerreiro.setEnergia(curarGuerreiro.getEnergia() + 20);
-        System.out.println("A " + this.getClass().getSimpleName() + " " + this.getNome() + " curou " + curarGuerreiro.getNome() + "\n");
+
+        if (this.getEnergia() <= 0) {
+            System.out.println("A " + this.getClass().getSimpleName() + " " + this.getNome() + " morreu envenenado\n");
+            this.morrer(this, lista, posAtk);
+        } else {
+            if (defender.getEnergia() <= 0) {
+                defender.morrer(defender, lista, posDef);
+            } else {
+                QuestoesTrabalho.morreuMatou(this, defender);
+                ArrayList<Guerreiro> filaAtacante = lista.get(posAtk);
+                defender.setEnergia(defender.getEnergia() - 20);
+                System.out.println("" + this.getNome() + " atacou " + defender.getNome() + "\n");
+                if (filaAtacante.get(1) != null) {
+                    Guerreiro curarGuerreiro = filaAtacante.get(1);
+                    curarGuerreiro.setEnergia(curarGuerreiro.getEnergia() + 20);
+                    System.out.println("A " + this.getClass().getSimpleName() + " " + this.getNome() + " curou " + curarGuerreiro.getNome() + "\n");
+                }
+            }
+        }
     }
     
     @Override

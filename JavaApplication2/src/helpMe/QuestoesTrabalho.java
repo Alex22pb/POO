@@ -16,6 +16,9 @@ import java.util.ArrayList;
  */
 public class QuestoesTrabalho {
 
+    private static Guerreiro g_dead;
+    private static Guerreiro atacante;
+    
     public static void exibirDadosGuerreiros(ArrayList<ArrayList<Guerreiro>> lista) {
         int i = 0;
         for (ArrayList<Guerreiro> vetor : lista) {
@@ -62,6 +65,32 @@ public class QuestoesTrabalho {
 
         System.out.println("\nGuerreiro mais velho: ");
         System.out.println("Nome: " + armazenarVelho.getNome() + " Idade: " + armazenarVelho.getIdade() + " Peso: " + armazenarVelho.getPeso() + " Energia: " + armazenarVelho.getEnergia());
+
+    }
+    
+    public static void morreuMatou(Guerreiro morreu, Guerreiro matou){
+        QuestoesTrabalho.g_dead = morreu;
+        QuestoesTrabalho.atacante = matou;
+    }
+    
+    public static void ultimoMorreuUltimoAtk(){
+        
+        System.out.println("\n=============================== | FIM DO JOGO | ===============================\n");
+        System.out.println("=====| Dados do Ultimo Morto| =====");
+         if (g_dead instanceof Grego || g_dead instanceof Nordico) {
+             System.out.println("O " + g_dead.getClass().getSimpleName() + " " + g_dead.getNome()
+                     + " de " + g_dead.getIdade() + " anos e " + g_dead.getPeso() + " kilos foi o último a ser derrotado no lado dos Atlantes e Egípcios.\n");
+         } else {
+             System.out.println("O " + g_dead.getClass().getSimpleName() + " " + g_dead.getNome()
+                     + " de " + g_dead.getIdade() + " anos e " + g_dead.getPeso() + " kilos foi o último a ser derrotado no lado dos Gregos e Nórdivos.\n");
+        }
+         
+        System.out.println("=====| Dados do Ultimo A Atacar| =====");
+        System.out.println("Nome: " + atacante.getNome() + "\nIdade: " + atacante.getIdade() + "\nPeso: " + atacante.getPeso() + " no " 
+                + g_dead.getClass().getSimpleName() + " " + g_dead.getNome()
+                + " de " + g_dead.getIdade() + " anos e " + g_dead.getPeso());
+        
+        //getSimpleName retorna o nome da classe sem o caminho completo do pacote, se n uso ele, iria imprimir o caminho inteiro EX: Guerreiro.Egipcio.HomemEscorpiaoE
 
     }
     

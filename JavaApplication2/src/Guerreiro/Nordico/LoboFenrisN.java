@@ -5,6 +5,7 @@
 package Guerreiro.Nordico;
 
 import Guerreiro.Guerreiro;
+import helpMe.QuestoesTrabalho;
 import java.util.ArrayList;
 
 /**
@@ -21,19 +22,32 @@ public class LoboFenrisN extends Nordico{
     
     @Override
     public void atacar(Guerreiro defender, ArrayList<ArrayList<Guerreiro>> lista, int posAtk, int posDef) {
-        ArrayList<Guerreiro> filaAtacante = lista.get(posAtk);
+
         if (this instanceof Envenenavel) {
             ((Envenenavel) this).aplicarEfeitoEnvenenado();
         }
-        int danobase = 40;
-        for (int i = 1; i < filaAtacante.size(); i++) {
-            if (filaAtacante.get(i) instanceof LoboFenrisN) {
-                danobase += 8;
+
+        if (this.getEnergia() <= 0) {
+            System.out.println("A " + this.getClass().getSimpleName() + " " + this.getNome() + " morreu envenenado\n");
+            this.morrer(this, lista, posAtk);
+        } else {
+            if (defender.getEnergia() <= 0) {
+                defender.morrer(defender, lista, posDef);
+            } else {
+                QuestoesTrabalho.morreuMatou(this, defender);
+                ArrayList<Guerreiro> filaAtacante = lista.get(posAtk);
+                int danobase = 40;
+                for (int i = 1; i < filaAtacante.size(); i++) {
+                    if (filaAtacante.get(i) instanceof LoboFenrisN) {
+                        danobase += 8;
+                    }
+                }
+
+                defender.setEnergia(defender.getEnergia() - danobase);
+                System.out.println("O " + this.getClass().getSimpleName() + " " + this.getNome() + " atacou " + defender.getNome() + "\n");
             }
         }
-        
-        defender.setEnergia(defender.getEnergia() - danobase);
-        System.out.println("O " + this.getClass().getSimpleName() + " " + this.getNome() + " atacou " + defender.getNome() + "\n");
+
     }
     
     @Override

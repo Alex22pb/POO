@@ -5,6 +5,7 @@
 package Guerreiro.Gregos;
 
 import Guerreiro.Guerreiro;
+import helpMe.QuestoesTrabalho;
 import java.util.ArrayList;
 
 /**
@@ -30,26 +31,45 @@ public class HidraG extends Grego{
     
     
     @Override
-    public void atacar(Guerreiro defender, ArrayList<ArrayList<Guerreiro>> lista, int posAtk, int posDef){
+    public void atacar(Guerreiro defender, ArrayList<ArrayList<Guerreiro>> lista, int posAtk, int posDef) {
+
         this.setarEnergia();
-        
+
         if (this instanceof Envenenavel) {
             ((Envenenavel) this).aplicarEfeitoEnvenenado();
         }
 
-        int quantidadeCab = 0;
-        int danoTotal = 40 + (5 * this.getQuantCabecas());
-        
-        defender.setEnergia(defender.getEnergia() - danoTotal);
-        System.out.println("A " + this.getClass().getSimpleName() + " "  + this.getNome() + " atacou " + defender.getNome() + "\n");
-        if(defender.getEnergia() <= 0){
-            quantidadeCab++;
+        if (this.getEnergia() <= 0) {
+            System.out.println("A " + this.getClass().getSimpleName() + " "  + this.getNome() + " morreu envenenado\n");
+            this.morrer(this, lista, posAtk);
+        } else {
+            if (defender.getEnergia() <= 0) {
+                defender.morrer(defender, lista, posDef);
+            } else {
+                if (defender.getEnergia() <= 0) {
+                    defender.morrer(defender, lista, posDef);
+                } else {
+                    QuestoesTrabalho.morreuMatou(this, defender);
+
+                    int quantidadeCab = 0;
+                    int danoTotal = 40 + (5 * this.getQuantCabecas());
+
+                    defender.setEnergia(defender.getEnergia() - danoTotal);
+
+                    System.out.println("A " + this.getClass().getSimpleName() + " " + this.getNome() + " atacou " + defender.getNome() + "\n");
+                    if (defender.getEnergia() <= 0) {
+                        quantidadeCab++;
+                    }
+
+                    if (this.getEnergia() < 100) {
+                        this.setEnergia(this.getEnergia() + 20);
+                    }
+                    this.setQuantCabecas(quantidadeCab);
+                }
+
+            }
         }
-        
-        if(this.getEnergia() < 100){
-            this.setEnergia(this.getEnergia() + 20);
-        }
-        this.setQuantCabecas(quantidadeCab);
+
     }
     
     @Override

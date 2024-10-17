@@ -5,6 +5,7 @@
 package Guerreiro.Atlantico;
 
 import Guerreiro.Guerreiro;
+import helpMe.QuestoesTrabalho;
 import java.util.ArrayList;
 
 /**
@@ -19,14 +20,25 @@ public class ArgusA extends AtlanticoA{
     }
     
     @Override
-    public void atacar(Guerreiro defender, ArrayList<ArrayList<Guerreiro>> lista, int posAtk, int posDef){
-        if (((AtlanticoA)this).isProvocando()) {
-            defender = lista.get(this.getIndiceQueProvocou()).getFirst();
-            this.ativarProvocacao(this.getIndiceQueProvocou(), lista, defender.getEnergia());
-            System.out.println("O " + this.getClass().getSimpleName() + " " + this.getNome() + " atacou " + defender.getNome() + "\n");
-        }else{
-            defender.setEnergia(0);
-            System.out.println("O " + this.getClass().getSimpleName() + " " + this.getNome() + " atacou " + defender.getNome() + "\n");
+    public void atacar(Guerreiro defender, ArrayList<ArrayList<Guerreiro>> lista, int posAtk, int posDef) {
+        if (defender.getEnergia() <= 0) {
+            defender.morrer(defender, lista, posDef);
+        } else {
+            QuestoesTrabalho.morreuMatou(this, defender);
+            if (((AtlanticoA) this).isProvocando()) {
+                defender = lista.get(this.getIndiceQueProvocou()).getFirst();
+                this.ativarProvocacao(this.getIndiceQueProvocou(), lista, defender.getEnergia());
+                System.out.println("O " + this.getClass().getSimpleName() + " " + this.getNome() + " atacou " + defender.getNome() + "\n");
+                if (defender.getEnergia() <= 0) {
+                    defender.morrer(defender, lista, this.getIndiceQueProvocou());
+                }
+            } else {
+                defender.setEnergia(0);
+                System.out.println("O " + this.getClass().getSimpleName() + " " + this.getNome() + " atacou " + defender.getNome() + "\n");
+                if (defender.getEnergia() <= 0) {
+                    defender.morrer(defender, lista, posDef);
+                }
+            }
         }
     }
     
