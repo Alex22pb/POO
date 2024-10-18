@@ -5,7 +5,7 @@
 package Guerreiro.Atlantico;
 
 import Guerreiro.Guerreiro;
-import Guerreiro.Guerreiro.Provocavel;
+import Guerreiro.Provocavel;
 import java.util.ArrayList;
 
 /**

@@ -5,7 +5,7 @@
 package Guerreiro.Gregos;
 
 import Guerreiro.Guerreiro;
-import Guerreiro.Guerreiro.Envenenavel;
+import Guerreiro.Envenenavel;
 
 /**
  *

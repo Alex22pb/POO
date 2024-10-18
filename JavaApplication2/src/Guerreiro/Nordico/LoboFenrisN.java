@@ -4,6 +4,7 @@
  */
 package Guerreiro.Nordico;
 
+import Guerreiro.Envenenavel;
 import Guerreiro.Guerreiro;
 import helpMe.QuestoesTrabalho;
 import java.util.ArrayList;

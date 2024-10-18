@@ -6,6 +6,7 @@ package Guerreiro.Nordico;
 
 import Guerreiro.Atlantico.AtlanticoA;
 import Guerreiro.Egipcio.Egipcio;
+import Guerreiro.Envenenavel;
 import Guerreiro.Guerreiro;
 import helpMe.QuestoesTrabalho;
 import java.util.ArrayList;
