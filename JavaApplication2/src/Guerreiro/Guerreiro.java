@@ -43,7 +43,7 @@ public abstract class Guerreiro {
     public void setEnergia(int energia) {
         this.energia = energia;
     }
- 
+    
     public abstract void atacar(Guerreiro defender, ArrayList<ArrayList<Guerreiro>> lista, int posAtk, int posDef);
     
     public abstract void morrer(Guerreiro defensor, ArrayList<ArrayList<Guerreiro>> lista, int posDef);

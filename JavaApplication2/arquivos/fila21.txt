@@ -1,2 +1,3 @@
-6 Coisa 10,52 54
-5 Gilslepe 89,74 150
+1 Coisa 10,52 54
+2 Gilslepe 89,74 150
+3 Joao 71,5 30

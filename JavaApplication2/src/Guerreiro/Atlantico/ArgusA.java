@@ -26,7 +26,7 @@ public class ArgusA extends AtlanticoA{
         } else {
             QuestoesTrabalho.morreuMatou(this, defender);
             if (((AtlanticoA) this).isProvocando()) {
-                defender = lista.get(this.getIndiceQueProvocou()).get(0);
+                defender = lista.get(this.getIndiceQueProvocou()).getFirst();
                 this.ativarProvocacao(this.getIndiceQueProvocou(), lista, defender.getEnergia());
                 System.out.println("O " + this.getClass().getSimpleName() + " " + this.getNome() + " atacou " + defender.getNome() + "\n");
                 if (defender.getEnergia() <= 0) {

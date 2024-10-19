@@ -33,12 +33,15 @@ public class AnubitaE extends Egipcio{
                 if (defender.getEnergia() <= 0) {
                     defender.morrer(defender, lista, this.getIndiceQueProvocou());
                 }
-                Guerreiro ultimoDefensor = filaDefensor.get(filaDefensor.size() - 1);
-                ultimoDefensor.setEnergia(ultimoDefensor.getEnergia() - 15);
-                System.out.println("O " + this.getClass().getSimpleName() + " " + this.getNome() + " atacou " + ultimoDefensor.getNome() + "\n");
-                if (ultimoDefensor.getEnergia() <= 0) {
-                    ultimoDefensor.morrer(ultimoDefensor, lista, this.getIndiceQueProvocou());
+                if (!filaDefensor.isEmpty()) {
+                    Guerreiro ultimoDefensor = filaDefensor.get(filaDefensor.size() - 1);
+                    ultimoDefensor.setEnergia(ultimoDefensor.getEnergia() - 15);
+                    System.out.println("O " + this.getClass().getSimpleName() + " " + this.getNome() + " atacou " + ultimoDefensor.getNome() + "\n");
+                    if (ultimoDefensor.getEnergia() <= 0) {
+                        ultimoDefensor.morrer(ultimoDefensor, lista, this.getIndiceQueProvocou());
+                    }
                 }
+
             } else {
                 ArrayList<Guerreiro> filaDefensor = lista.get(posDef);
 

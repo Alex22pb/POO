@@ -47,6 +47,7 @@ public class ManticoraG extends Grego{
 
                 int posFila = lista.indexOf(filaDefensor);
 
+                
                 switch (posFila) {
                     case 4 -> {
                         if (!lista.get(posFila + 1).isEmpty()) {

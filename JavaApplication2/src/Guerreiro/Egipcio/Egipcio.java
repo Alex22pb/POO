@@ -23,7 +23,7 @@ public abstract class Egipcio extends Guerreiro implements Provocavel{
 
      @Override
      public void ativarProvocacao(int indiceFila, ArrayList<ArrayList<Guerreiro>> lista, int valorAtk ) {
-        Guerreiro defender = lista.get(indiceFila).get(0);
+        Guerreiro defender = lista.get(indiceFila).getFirst();
         defender.setEnergia(defender.getEnergia() - valorAtk);
     }
 

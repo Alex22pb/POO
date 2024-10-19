@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -201,8 +202,8 @@ public class Arena {
             if (!lista.get(i).isEmpty()) {
                 int posDefensor = i + 4;
                 Guerreiro atacante = lista.get(i).get(0);
-                if (lista.get(i + 4).isEmpty()) {
-                    posDefensor = encontrarDefensorEA(lista.get(i + 4));
+                if (lista.get(posDefensor).isEmpty()) {
+                    posDefensor = encontrarDefensorEA(posDefensor);
                 }
 
                 if (posDefensor >= 4 && posDefensor < lista.size()) {
@@ -217,25 +218,21 @@ public class Arena {
         return false;
     }
 
-    private static int encontrarDefensorEA(ArrayList<Guerreiro> ListaDefensor) {
-        int posicao = VetorArena.indexOf(ListaDefensor);
+    private static int encontrarDefensorEA(int posDefensor) {
+        ArrayList<Guerreiro> ListaDefensor = VetorArena.get(posDefensor);
         boolean reset = false;
         while (ListaDefensor.isEmpty()) {
-            posicao = (posicao % 4) + 4; // Ciclo entre as filas do lado 2 (5 a 8)
-            if (posicao > VetorArena.size() && !reset) {
-                posicao = VetorArena.size() / 2;
+            posDefensor++;
+            if (posDefensor == VetorArena.size() && !reset) {
+                posDefensor = VetorArena.size() / 2;
                 reset = true;
-            } else if (posicao > VetorArena.size() && reset) {
+            } else if (posDefensor == VetorArena.size() && reset) {
                 return -1;
-            } else {
-                ListaDefensor = VetorArena.get(posicao);
-                if (ListaDefensor.isEmpty()) {
-                    posicao++;
-                }
-
             }
+            ListaDefensor = VetorArena.get(posDefensor);
+
         }
-        return posicao;
+        return posDefensor;
     }
 
     private static boolean chamarAtaqueAE(ArrayList<ArrayList<Guerreiro>> lista) {
@@ -246,7 +243,7 @@ public class Arena {
                 int posDefensor = i - 4;
                 Guerreiro atacante = lista.get(i).get(0);
                 if (lista.get(i - 4).isEmpty()) {
-                    posDefensor = encontrarDefensorGN(lista.get(i - 4));
+                    posDefensor = encontrarDefensorGN(posDefensor);
                 }
                 if (posDefensor >= 0 && posDefensor < 4) {
                     Guerreiro defensor = lista.get(posDefensor).get(0);
@@ -263,23 +260,19 @@ public class Arena {
 
     }
 
-    private static int encontrarDefensorGN(ArrayList<Guerreiro> ListaDefensor) {
-        int posicao = VetorArena.indexOf(ListaDefensor);
+    private static int encontrarDefensorGN(int posDefensor) {
+        ArrayList<Guerreiro> ListaDefensor = VetorArena.get(posDefensor);
         boolean reset = false;
         while (ListaDefensor.isEmpty()) {
-            //posicao = (posicao % 4) - 4; // Ciclo entre as filas do lado 1 (1 a 4)
-            if (posicao > 4 && !reset) {
-                posicao = 0;
+            posDefensor++;
+            if (posDefensor > VetorArena.size()/2 && !reset) {
+                posDefensor = 0;
                 reset = true;
-            } else if (posicao > 4 && reset) {
+            } else if (posDefensor > VetorArena.size()/2 && reset) {
                 return -1;
-            } else {
-                ListaDefensor = VetorArena.get(posicao);
-                if (ListaDefensor.isEmpty()) {
-                    posicao++;
-                }
-            }
+            } 
+            ListaDefensor = VetorArena.get(posDefensor);
         }
-        return posicao;
+        return posDefensor;
     }
 }

@@ -41,17 +41,19 @@ public class GigantePedraN extends Nordico{
                 System.out.println("O " + this.getClass().getSimpleName() + " " + this.getNome() + " atacou " + defender.getNome() + "\n");
                 
                 for (int i = lista.size() / 2; i < lista.size(); i++) {
-                    defender = lista.get(i).get(0);
-                    if (defender instanceof AtlanticoA atlas) {
-                        if (!atlas.isProvocando()) {
-                            atlas.setForcarSerAtk(true);
-                            atlas.setIndiceQueProvocou(posAtk);
-                        }
-                    } else {
-                        Egipcio egito = (Egipcio) defender;
-                        if (!egito.isProvocando()) {
-                            egito.setForcarSerAtk(true);
-                            egito.setIndiceQueProvocou(posAtk);
+                    if (!lista.get(i).isEmpty()) {
+                        defender = lista.get(i).getFirst();
+                        if (defender instanceof AtlanticoA atlas) {
+                            if (!atlas.isProvocando()) {
+                                atlas.setForcarSerAtk(true);
+                                atlas.setIndiceQueProvocou(posAtk);
+                            }
+                        } else {
+                            Egipcio egito = (Egipcio) defender;
+                            if (!egito.isProvocando()) {
+                                egito.setForcarSerAtk(true);
+                                egito.setIndiceQueProvocou(posAtk);
+                            }
                         }
                     }
                 }

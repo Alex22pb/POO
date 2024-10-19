@@ -26,7 +26,7 @@ public class PrometanoA extends AtlanticoA{
         } else {
             QuestoesTrabalho.morreuMatou(this, defender);
             if (((AtlanticoA) this).isProvocando()) {
-                defender = lista.get(this.getIndiceQueProvocou()).get(0);
+                defender = lista.get(this.getIndiceQueProvocou()).getFirst();
                 this.ativarProvocacao(this.getIndiceQueProvocou(), lista, 10);
                 System.out.println("O " + this.getClass().getSimpleName() + " " + this.getNome() + " atacou " + defender.getNome() + "\n");
                 if (defender.getEnergia() <= 0) {
@@ -60,8 +60,8 @@ public class PrometanoA extends AtlanticoA{
                 filaDefensor.add(filho2);
                 filaDefensor.remove(defender);
             } else {
-                Guerreiro filho1 = new PrometanoA(defender.getNome() + "1", defender.getIdade(), defender.getPeso());
-                Guerreiro filho2 = new PrometanoA(defender.getNome() + "2", defender.getIdade(), defender.getPeso());
+                Guerreiro filho1 = new PrometanoA(defender.getNome() + " 1", defender.getIdade(), defender.getPeso());
+                Guerreiro filho2 = new PrometanoA(defender.getNome() + " 2", defender.getIdade(), defender.getPeso());
 
                 filho1.setEnergia(filho1.getEnergia() / 2);
                 filho1.setEnergia(filho2.getEnergia() / 2);
