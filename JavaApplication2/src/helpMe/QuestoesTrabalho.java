@@ -95,10 +95,10 @@ public class QuestoesTrabalho {
         System.out.println("=====| Dados do Ultimo Morto| =====");
          if (g_dead instanceof Grego || g_dead instanceof Nordico) {
              System.out.println("O " + g_dead.getClass().getSimpleName() + " " + g_dead.getNome()
-                     + " de " + g_dead.getIdade() + " anos e " + g_dead.getPeso() + " kilos foi o último a ser derrotado no lado dos Gregos e Nórdicos.\n");
+                     + " de " + g_dead.getIdade() + " anos e " + g_dead.getPeso() + " kilos foi o último a ser derrotado no lado dos Atlantes e Egípcios.\n");
          } else {
              System.out.println("O " + g_dead.getClass().getSimpleName() + " " + g_dead.getNome()
-                     + " de " + g_dead.getIdade() + " anos e " + g_dead.getPeso() + " kilos foi o último a ser derrotado no lado dos Atlantes e Egípcios.\n");
+                     + " de " + g_dead.getIdade() + " anos e " + g_dead.getPeso() + " kilos foi o último a ser derrotado no lado dos Gregos e Nórdivos.\n");
         }
          
         System.out.println("=====| Dados do Ultimo A Atacar| =====");

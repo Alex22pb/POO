@@ -6,8 +6,8 @@ package Guerreiro;
 
 /**
  *
- * @author Usuario
+ * @author 2022222760020
  */
-public interface Envenenavel {
+public interface Envenenavel{
     void aplicarEfeitoEnvenenado();
 }

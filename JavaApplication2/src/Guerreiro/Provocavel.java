@@ -8,9 +8,9 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Usuario
+ * @author 2022222760020
  */
 public interface Provocavel {
     void ativarProvocacao(int indiceFila, ArrayList<ArrayList<Guerreiro>> lista, int valorAtk);
-        boolean isProvocando();
+    boolean isProvocando();
 }

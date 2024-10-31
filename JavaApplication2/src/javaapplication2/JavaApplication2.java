@@ -2,6 +2,7 @@ package javaapplication2;
 
 import helpMe.Arena;
 import static helpMe.Arena.iniciarArray;
+import helpMe.FimFila;
 import java.io.IOException;
 import helpMe.QuestoesTrabalho;
 

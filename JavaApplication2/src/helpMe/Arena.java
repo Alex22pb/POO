@@ -1,4 +1,3 @@
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -102,36 +101,50 @@ public class Arena {
         while (!fimDaPartida) {
 //            
             if (Sorteio.realizarSorteio() == 1) {
-                if (atkNG == true) {
-                    mudarPosicoes(VetorArena);
-                    atkNG = false;
-                }
-                if (atkNG == false) {
-                    System.out.println("=======|ATAQUE DOS GREGOS E NÓRDICOS|======\n");
-                    fimDaPartida = chamarAtaqueNG(VetorArena);
-                    atkNG = true;
-                    if (atkAE == true) {
-                        atkAE = false;
-                    }
-                    verificarMortos(VetorArena);
-                    fimDaPartida = retornarTamanhoVetor(VetorArena);
-                }
-            } else {
-                if (atkAE == true) {
-                    mudarPosicoes(VetorArena);
-                    atkAE = false;
-                }
-                if (atkAE == false) {
-                    System.out.println("=======|ATAQUE DOS ATLÁTICOS E EGÍPCIOS|======\n");
-                    fimDaPartida = chamarAtaqueAE(VetorArena);
-                    atkAE = true;
-                    if (atkNG == true) {
-                        atkNG = false;
-                    }
-                    verificarMortos(VetorArena);
-                    fimDaPartida = retornarTamanhoVetor(VetorArena);
+                System.out.println("=======|ATAQUE DOS GREGOS E NÓRDICOS|======\n");
+                fimDaPartida = chamarAtaqueNG(VetorArena);
+                verificarMortos(VetorArena);
+                fimDaPartida = chamarAtaqueAE(VetorArena);
+                verificarMortos(VetorArena);
+                fimDaPartida = retornarTamanhoVetor(VetorArena);
 
-                }
+//                if (atkNG == true) {
+//                    mudarPosicoes(VetorArena);
+//                    atkNG = false;
+//                }
+//                if (atkNG == false) {
+//                    System.out.println("=======|ATAQUE DOS GREGOS E NÓRDICOS|======\n");
+//                    fimDaPartida = chamarAtaqueNG(VetorArena);
+//                    atkNG = true;
+//                    if (atkAE == true) {
+//                        atkAE = false;
+//                    }
+//                    verificarMortos(VetorArena);
+//                    fimDaPartida = retornarTamanhoVetor(VetorArena);
+//                }
+            } else {
+                System.out.println("=======|ATAQUE DOS ATLÁTICOS E EGÍPCIOS|======\n");
+                fimDaPartida = chamarAtaqueAE(VetorArena);
+                verificarMortos(VetorArena);
+                fimDaPartida = chamarAtaqueNG(VetorArena);
+                verificarMortos(VetorArena);
+                fimDaPartida = retornarTamanhoVetor(VetorArena); 
+                
+//                if (atkAE == true) {
+//                    mudarPosicoes(VetorArena);
+//                    atkAE = false;
+//                }
+//                if (atkAE == false) {
+//                    System.out.println("=======|ATAQUE DOS ATLÁTICOS E EGÍPCIOS|======\n");
+//                    fimDaPartida = chamarAtaqueAE(VetorArena);
+//                    atkAE = true;
+//                    if (atkNG == true) {
+//                        atkNG = false;
+//                    }
+//                    verificarMortos(VetorArena);
+//                    fimDaPartida = retornarTamanhoVetor(VetorArena);
+//
+//                }
 
             }
 
@@ -202,8 +215,8 @@ public class Arena {
             if (!lista.get(i).isEmpty()) {
                 int posDefensor = i + 4;
                 Guerreiro atacante = lista.get(i).get(0);
-                if (lista.get(posDefensor).isEmpty()) {
-                    posDefensor = encontrarDefensorEA(posDefensor);
+                if (lista.get(i + 4).isEmpty()) {
+                    posDefensor = encontrarDefensorEA(lista.get(i + 4));
                 }
 
                 if (posDefensor >= 4 && posDefensor < lista.size()) {
@@ -218,21 +231,25 @@ public class Arena {
         return false;
     }
 
-    private static int encontrarDefensorEA(int posDefensor) {
-        ArrayList<Guerreiro> ListaDefensor = VetorArena.get(posDefensor);
+    private static int encontrarDefensorEA(ArrayList<Guerreiro> ListaDefensor) {
+        int posicao = VetorArena.indexOf(ListaDefensor);
         boolean reset = false;
         while (ListaDefensor.isEmpty()) {
-            posDefensor++;
-            if (posDefensor == VetorArena.size() && !reset) {
-                posDefensor = VetorArena.size() / 2;
+            posicao = (posicao % 4) + 4; // Ciclo entre as filas do lado 2 (5 a 8)
+            if (posicao > VetorArena.size() && !reset) {
+                posicao = VetorArena.size() / 2;
                 reset = true;
-            } else if (posDefensor == VetorArena.size() && reset) {
+            } else if (posicao > VetorArena.size() && reset) {
                 return -1;
-            }
-            ListaDefensor = VetorArena.get(posDefensor);
+            } else {
+                ListaDefensor = VetorArena.get(posicao);
+                if (ListaDefensor.isEmpty()) {
+                    posicao++;
+                }
 
+            }
         }
-        return posDefensor;
+        return posicao;
     }
 
     private static boolean chamarAtaqueAE(ArrayList<ArrayList<Guerreiro>> lista) {
@@ -243,7 +260,7 @@ public class Arena {
                 int posDefensor = i - 4;
                 Guerreiro atacante = lista.get(i).get(0);
                 if (lista.get(i - 4).isEmpty()) {
-                    posDefensor = encontrarDefensorGN(posDefensor);
+                    posDefensor = encontrarDefensorGN(lista.get(i - 4));
                 }
                 if (posDefensor >= 0 && posDefensor < 4) {
                     Guerreiro defensor = lista.get(posDefensor).get(0);
@@ -260,19 +277,23 @@ public class Arena {
 
     }
 
-    private static int encontrarDefensorGN(int posDefensor) {
-        ArrayList<Guerreiro> ListaDefensor = VetorArena.get(posDefensor);
+    private static int encontrarDefensorGN(ArrayList<Guerreiro> ListaDefensor) {
+        int posicao = VetorArena.indexOf(ListaDefensor);
         boolean reset = false;
         while (ListaDefensor.isEmpty()) {
-            posDefensor++;
-            if (posDefensor > VetorArena.size()/2 && !reset) {
-                posDefensor = 0;
+            //posicao = (posicao % 4) - 4; // Ciclo entre as filas do lado 1 (1 a 4)
+            if (posicao > 4 && !reset) {
+                posicao = 0;
                 reset = true;
-            } else if (posDefensor > VetorArena.size()/2 && reset) {
+            } else if (posicao > 4 && reset) {
                 return -1;
-            } 
-            ListaDefensor = VetorArena.get(posDefensor);
+            } else {
+                ListaDefensor = VetorArena.get(posicao);
+                if (ListaDefensor.isEmpty()) {
+                    posicao++;
+                }
+            }
         }
-        return posDefensor;
+        return posicao;
     }
 }
