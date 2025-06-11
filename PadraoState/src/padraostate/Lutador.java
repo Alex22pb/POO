@@ -1,0 +1,56 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package padraostate;
+
+/**
+ *
+ * @author 2022222760020
+ */
+public class Lutador {
+    protected LutadorState estado;
+    
+    String nome;
+    int ki;
+    int vida;
+
+    public Lutador(String nome, int ki, int vida) {
+        this.nome = nome;
+        this.ki = ki;
+        this.vida = vida;
+        this.estado = new FormaNormal(this);
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public int getKi() {
+        return ki;
+    }
+
+    public void setKi(int ki) {
+        this.ki = ki;
+    }
+
+    public int getVida() {
+        return vida;
+    }
+
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
+    
+    public void transformar(){
+        estado = estado.transformar();
+    }
+    
+    public void levarDano(){
+        estado = estado.levarDano();
+    }
+    
+    public void verificarKI(){
+        estado = estado.verificarKI();
+    }
+}
