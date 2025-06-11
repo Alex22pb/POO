@@ -9,10 +9,10 @@ package padraostate;
  * @author 2022222760020
  */
 public interface LutadorState {
-    void atacar();
-    void carregarKi();
+    LutadorState atacar();
+    LutadorState carregarKi();
     LutadorState transformar();
     LutadorState levarDano();
-    void descansar();
+    LutadorState descansar();
     LutadorState verificarKI();
 }

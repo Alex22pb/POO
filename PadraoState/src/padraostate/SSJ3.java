@@ -16,15 +16,17 @@ public class SSJ3 implements LutadorState{
     }
     
     @Override
-    public void atacar(){
+    public LutadorState atacar(){
         System.out.println(perso.getNome() + " em SSJ3 usa Kamehameha kaioken 10x!");
         perso.setKi(perso.getKi() - 40);
+        return this;
     }
     
     @Override
-    public void carregarKi(){
+    public LutadorState carregarKi(){
         System.out.println("Carregando KI...");
         perso.setKi(perso.getKi() + 50);
+        return this;
     }
     
     @Override
@@ -44,9 +46,10 @@ public class SSJ3 implements LutadorState{
     }
     
     @Override
-    public void descansar(){
+    public LutadorState descansar(){
         System.out.println("Descansando, recuperando vida...");
         perso.setVida(perso.getVida() + 10);
+        return this;
     }
     
     @Override

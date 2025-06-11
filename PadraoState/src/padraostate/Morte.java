@@ -16,13 +16,15 @@ public class Morte implements LutadorState{
     }
         
     @Override
-    public void atacar(){
+    public LutadorState atacar(){
         System.out.println(perso.getNome() + "morreu");
+        return null;
     }
     
     @Override
-    public void carregarKi(){
+    public LutadorState carregarKi(){
         System.out.println(perso.getNome() + "morreu");
+        return null;
     }
     
     @Override
@@ -38,8 +40,9 @@ public class Morte implements LutadorState{
     }
     
     @Override
-    public void descansar(){
+    public LutadorState descansar(){
         System.out.println(perso.getNome() + "morreu");
+        return null;
     }
     
     @Override

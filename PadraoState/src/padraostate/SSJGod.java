@@ -16,14 +16,16 @@ public class SSJGod implements LutadorState{
     }
     
     @Override
-    public void atacar(){
+    public LutadorState atacar(){
         System.out.println(perso.getNome() + " em SSJGod usa Kamehameha Divino!");
         perso.setKi(perso.getKi() - 60);
+        return this;
     }
     
     @Override
-    public void carregarKi(){
+    public LutadorState carregarKi(){
         System.out.println("Nivel máximo de KI atingido");
+        return this;
     }
     
     @Override
@@ -38,9 +40,10 @@ public class SSJGod implements LutadorState{
     }
     
     @Override
-    public void descansar(){
+    public LutadorState descansar(){
         System.out.println("Descansando, recuperando vida...");
         perso.setVida(perso.getVida() + 10);
+        return this;
     }
     
     @Override
