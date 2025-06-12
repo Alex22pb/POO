@@ -27,7 +27,7 @@ public class PadraoState {
 //        personagem.descansar();
 
         
-        personagem.carregarKi();  n
+        personagem.carregarKi();  
         personagem.transformar(); 
         personagem.transformar(); 
         personagem.carregarKi(); 
