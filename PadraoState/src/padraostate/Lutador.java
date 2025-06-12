@@ -46,11 +46,23 @@ public class Lutador {
         estado = estado.transformar();
     }
     
-    public void levarDano(){
-        estado = estado.levarDano();
+    public void levarDano(int dano){
+        estado = estado.levarDano(dano);
     }
     
     public void verificarKI(){
         estado = estado.verificarKI();
+    }
+    
+    public void atacar(){
+        estado = estado.atacar();
+    }
+    
+    public void descansar(){
+        estado = estado.descansar();
+    }
+    
+    public void carregarKi(){
+        estado = estado.carregarKi();
     }
 }

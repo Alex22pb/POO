@@ -31,7 +31,7 @@ public class SSJBlue implements LutadorState{
     
     @Override
     public LutadorState transformar(){
-        if (perso.getKi() == 350) {
+        if (perso.getKi() >= 350) {
             System.out.println("AAAAAAH! " + perso.getNome() + " vira Super Saiyajin God!");
             return new SSJGod(perso);
         } else {
@@ -41,8 +41,14 @@ public class SSJBlue implements LutadorState{
     }
     
     @Override
-    public LutadorState levarDano(){
-        return this;
+    public LutadorState levarDano(int dano){
+        perso.setVida(perso.getVida()- dano);
+        System.out.println(perso.getNome() + " recebeu " + dano + " de dano");
+        if(perso.getVida() <= 0){
+            return new Morte(perso);
+        }else{
+            return this;
+        }
     }
     
     @Override
@@ -54,6 +60,11 @@ public class SSJBlue implements LutadorState{
     
     @Override
     public LutadorState verificarKI(){
-        return this;
+        if(perso.getKi() < 300){
+            System.out.println("Ki baixo! Voltando para forma SSJ3.");
+            return new SSJ3(perso);
+        }else{
+           return this; 
+        }
     }
 }

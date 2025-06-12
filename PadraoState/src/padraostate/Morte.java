@@ -34,7 +34,7 @@ public class Morte implements LutadorState{
     }
     
     @Override
-    public LutadorState levarDano(){
+    public LutadorState levarDano(int dano){
         System.out.println(perso.getNome() + "morreu");
         return null;
     }
