@@ -16,28 +16,6 @@ public class PadraoState {
     public static void main(String[] args) {
         Lutador personagem = new Lutador("Goku", 100, 100);
 
-//        personagem.atacar();        
-//        personagem.carregarKi();    
-//        personagem.transformar();   
-//        personagem.atacar();      
-//        personagem.transformar();  
-//        personagem.carregarKi();
-//        personagem.transformar();  
-//        personagem.atacar();
-//        personagem.descansar();
-
-        
-//        personagem.carregarKi();  
-//        personagem.transformar(); 
-//        personagem.atacar();
-//        personagem.transformar(); 
-//        personagem.carregarKi(); 
-//        personagem.transformar(); 
-//        personagem.transformar(); 
-//        personagem.atacar();      
-//        personagem.verificarKI(); 
-
-
         // Forma Normal
         personagem.atacar(); // -10 Ki FORMA NORMAL
 
