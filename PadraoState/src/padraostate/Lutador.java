@@ -51,10 +51,6 @@ public class Lutador {
         this.ataquesConsecutivos = ataquesConsecutivos;
     }
     
-    public void transformar(){
-        estado = estado.transformar();
-    }
-    
     public void levarDano(int dano){
         estado = estado.levarDano(dano);
     }
@@ -73,7 +69,6 @@ public class Lutador {
     }
     
     public void carregarKi() {
-        System.out.println("Carregando KI...");
-        this.setKi(this.getKi() + 50);
+        estado = estado.carregarKI();
     }
 }

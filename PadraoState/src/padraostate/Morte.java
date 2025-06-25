@@ -22,7 +22,7 @@ public class Morte implements LutadorState{
     }
     
     @Override
-    public LutadorState transformar(){
+    public LutadorState carregarKI(){
         System.out.println(perso.getNome() + " morreu");
         return null;
     }

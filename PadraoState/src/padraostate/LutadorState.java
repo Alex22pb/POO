@@ -10,7 +10,7 @@ package padraostate;
  */
 public interface LutadorState {
     LutadorState atacar();
-    LutadorState transformar();
+    LutadorState carregarKI();
     LutadorState levarDano(int dano);
     LutadorState verificarKI();
 }

@@ -24,7 +24,10 @@ public class SSJGod implements LutadorState{
             perso.setKi(150);
             perso.setAtaquesConsecutivos(0);
             return new SSJ1(perso);
-        } else {
+        }else if (perso.getKi() < 410){
+            System.out.println(perso.getNome() + " está com o KI muito baixo para atacar!");
+            return this;
+        }else {
             perso.setAtaquesConsecutivos(perso.getAtaquesConsecutivos() + 1);
             System.out.println(perso.getNome() + " em SSJGod usa Kamehameha Divino!");
             perso.setKi(perso.getKi() - 60);
@@ -32,14 +35,12 @@ public class SSJGod implements LutadorState{
         }
     }
     
-    public void carregarKi() {
-        System.out.println("KI no nível máximo");
-    }
     
     @Override
-    public LutadorState transformar(){
-        System.out.println("Nivel máximo de transformação atingido");
-        return this;  
+    public LutadorState carregarKI() {
+        System.out.println("Carregando KI...");
+        perso.setKi(perso.getKi() + 50);
+        return this;
     }
     
     @Override

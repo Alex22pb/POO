@@ -24,7 +24,10 @@ public class SSJ1 implements LutadorState{
             perso.setKi(250);
             perso.setAtaquesConsecutivos(0);
             return new SSJ3(perso);
-        } else {
+        }else if(perso.getKi() < 170){
+            System.out.println(perso.getNome() + " está com o KI muito baixo para atacar!");
+            return this;
+        }else {
             perso.setAtaquesConsecutivos(perso.getAtaquesConsecutivos() + 1);
             System.out.println(perso.getNome() + " em SSJ1 usa Kamehameha!");
             perso.setKi(perso.getKi() - 20);
@@ -33,12 +36,14 @@ public class SSJ1 implements LutadorState{
     }
     
     @Override
-    public LutadorState transformar(){
+    public LutadorState carregarKI(){
+        System.out.println("Carregando KI...");
+        perso.setKi(perso.getKi() + 50);
         if(perso.getKi() >= 200){
             System.out.println("AAAAAAH! " + perso.getNome() + " vira Super Saiyajin 2!");
             return new SSJ2(perso);
         }else{
-            System.out.println("KI insuficiente");
+            System.out.println("KI insuficiente para transformação");
             return this; 
         } 
     }
