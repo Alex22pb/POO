@@ -22,12 +22,6 @@ public class Morte implements LutadorState{
     }
     
     @Override
-    public LutadorState carregarKi(){
-        System.out.println(perso.getNome() + "morreu");
-        return null;
-    }
-    
-    @Override
     public LutadorState transformar(){
         System.out.println(perso.getNome() + "morreu");
         return null;
@@ -35,12 +29,6 @@ public class Morte implements LutadorState{
     
     @Override
     public LutadorState levarDano(int dano){
-        System.out.println(perso.getNome() + "morreu");
-        return null;
-    }
-    
-    @Override
-    public LutadorState descansar(){
         System.out.println(perso.getNome() + "morreu");
         return null;
     }

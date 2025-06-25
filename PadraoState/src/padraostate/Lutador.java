@@ -59,10 +59,12 @@ public class Lutador {
     }
     
     public void descansar(){
-        estado = estado.descansar();
+        System.out.println("Descansando, recuperando vida...");
+        this.setVida(this.getVida() + 10);
     }
     
-    public void carregarKi(){
-        estado = estado.carregarKi();
+    public void carregarKi() {
+        System.out.println("Carregando KI...");
+        this.setKi(this.getKi() + 50);
     }
 }

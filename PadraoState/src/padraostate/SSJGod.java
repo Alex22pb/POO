@@ -22,10 +22,8 @@ public class SSJGod implements LutadorState{
         return this;
     }
     
-    @Override
-    public LutadorState carregarKi(){
-        System.out.println("Nivel máximo de KI atingido");
-        return this;
+    public void carregarKi() {
+        System.out.println("KI no nível máximo");
     }
     
     @Override
@@ -43,13 +41,6 @@ public class SSJGod implements LutadorState{
         }else{
             return this;
         }
-    }
-    
-    @Override
-    public LutadorState descansar(){
-        System.out.println("Descansando, recuperando vida...");
-        perso.setVida(perso.getVida() + 10);
-        return this;
     }
     
     @Override
