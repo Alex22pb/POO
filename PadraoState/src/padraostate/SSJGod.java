@@ -35,7 +35,6 @@ public class SSJGod implements LutadorState{
         }
     }
     
-    
     @Override
     public LutadorState carregarKI() {
         System.out.println("Carregando KI...");
@@ -59,8 +58,6 @@ public class SSJGod implements LutadorState{
         if(perso.getKi() < 350 && perso.getKi() >= 0){
             System.out.println("Ki baixo! Voltando para forma SSJ Blue.");
             return new SSJBlue(perso);
-        }else if (perso.getKi() < 0){
-           return new Morte(perso);
         }else{
            return this; 
         }

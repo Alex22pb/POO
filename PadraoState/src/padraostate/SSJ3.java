@@ -64,8 +64,6 @@ public class SSJ3 implements LutadorState{
         if(perso.getKi() < 250 && perso.getKi() >= 0){
             System.out.println("Ki baixo! Voltando para forma SSJ2");
             return new SSJBlue(perso);
-        }else if (perso.getKi() < 0){
-           return new Morte(perso);
         }else{
            return this; 
         }

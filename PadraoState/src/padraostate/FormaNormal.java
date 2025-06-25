@@ -60,11 +60,8 @@ public class FormaNormal implements LutadorState{
     }
     
     @Override
-    public LutadorState verificarKI(){
-        if (perso.getKi() < 0){
-           return new Morte(perso);
-        }else{
-           return this; 
-        }
+    public LutadorState verificarKI() {
+        System.out.println(perso.getNome() + " está na forma normal");
+        return this;
     }
 }
