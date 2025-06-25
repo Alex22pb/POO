@@ -17,25 +17,25 @@ public class Morte implements LutadorState{
         
     @Override
     public LutadorState atacar(){
-        System.out.println(perso.getNome() + "morreu");
+        System.out.println(perso.getNome() + " morreu");
         return null;
     }
     
     @Override
     public LutadorState transformar(){
-        System.out.println(perso.getNome() + "morreu");
+        System.out.println(perso.getNome() + " morreu");
         return null;
     }
     
     @Override
     public LutadorState levarDano(int dano){
-        System.out.println(perso.getNome() + "morreu");
+        System.out.println(perso.getNome() + " morreu");
         return null;
     }
     
     @Override
     public LutadorState verificarKI(){
-        System.out.println(perso.getNome() + "morreu");
+        System.out.println(perso.getNome() + " morreu");
         return null;
     }
 }
