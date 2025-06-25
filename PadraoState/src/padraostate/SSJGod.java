@@ -17,9 +17,19 @@ public class SSJGod implements LutadorState{
     
     @Override
     public LutadorState atacar(){
-        System.out.println(perso.getNome() + " em SSJGod usa Kamehameha Divino!");
-        perso.setKi(perso.getKi() - 60);
-        return this;
+        if (perso.getAtaquesConsecutivos() >= 3) {
+            System.out.println(perso.getNome() + " liberou um ataque devastador além de seus limites!");
+            System.out.println("O impacto foi tão grande que ele não conseguiu manter sua transformação...");
+            System.out.println("Regredindo transformação!");
+            perso.setKi(150);
+            perso.setAtaquesConsecutivos(0);
+            return new SSJ1(perso);
+        } else {
+            perso.setAtaquesConsecutivos(perso.getAtaquesConsecutivos() + 1);
+            System.out.println(perso.getNome() + " em SSJGod usa Kamehameha Divino!");
+            perso.setKi(perso.getKi() - 60);
+            return this;
+        }
     }
     
     public void carregarKi() {
@@ -45,9 +55,11 @@ public class SSJGod implements LutadorState{
     
     @Override
     public LutadorState verificarKI(){
-        if(perso.getKi() < 350){
+        if(perso.getKi() < 350 && perso.getKi() >= 0){
             System.out.println("Ki baixo! Voltando para forma SSJ Blue.");
             return new SSJBlue(perso);
+        }else if (perso.getKi() < 0){
+           return new Morte(perso);
         }else{
            return this; 
         }

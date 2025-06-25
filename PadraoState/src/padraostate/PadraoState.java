@@ -18,6 +18,9 @@ public class PadraoState {
 
         // Forma Normal
         personagem.atacar(); // -10 Ki FORMA NORMAL
+        personagem.atacar(); // -10 Ki FORMA NORMAL
+        personagem.atacar(); // -10 Ki FORMA NORMAL
+        personagem.atacar(); // -10 Ki FORMA NORMAL
 
         // Carrega Ki até poder virar SSJ1 (150)
         personagem.carregarKi(); // +50 => 140

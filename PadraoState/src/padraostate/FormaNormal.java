@@ -16,10 +16,20 @@ public class FormaNormal implements LutadorState{
     }
     
     @Override
-    public LutadorState atacar(){
-        System.out.println(perso.getNome() + " ataque com socos rápidos");
-        perso.setKi(perso.getKi() - 10);
-        return this;
+    public LutadorState atacar() {
+        if (perso.getAtaquesConsecutivos() >= 3) {
+            System.out.println(perso.getNome() + " atacou com tanta fúria que ultrapassou seus limites!");
+            System.out.println("Transformando-se espontaneamente para uma nova forma!");
+            System.out.println("AAAAAAH! " + perso.getNome() + " vira Super Saiyajin 2!");
+            perso.setKi(200);
+            perso.setAtaquesConsecutivos(0);
+            return new SSJ2(perso);
+        } else {
+            perso.setAtaquesConsecutivos(perso.getAtaquesConsecutivos() + 1);
+            System.out.println(perso.getNome() + " ataque com socos rápidos");
+            perso.setKi(perso.getKi() - 10);
+            return this;
+        }
     }
     
     @Override
@@ -46,6 +56,10 @@ public class FormaNormal implements LutadorState{
     
     @Override
     public LutadorState verificarKI(){
-        return this;
+        if (perso.getKi() < 0){
+           return new Morte(perso);
+        }else{
+           return this; 
+        }
     }
 }

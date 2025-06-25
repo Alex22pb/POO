@@ -16,10 +16,20 @@ public class SSJBlue implements LutadorState{
     }
     
     @Override
-    public LutadorState atacar(){
-        System.out.println(perso.getNome() + " em SSJ2 usa Kamehameha com kaioken blue!");
-        perso.setKi(perso.getKi() - 50);
-        return this;
+    public LutadorState atacar(){       
+        if (perso.getAtaquesConsecutivos() >= 3) {
+            System.out.println(perso.getNome() + " liberou um ataque devastador além de seus limites!");
+            System.out.println("O impacto foi tão grande que ele não conseguiu manter sua transformação...");
+            System.out.println("Regredindo transformação!");
+            perso.setKi(200);
+            perso.setAtaquesConsecutivos(0);
+            return new SSJ2(perso);
+        } else {
+            perso.setAtaquesConsecutivos(perso.getAtaquesConsecutivos() + 1);
+            System.out.println(perso.getNome() + " em SSJ2 usa Kamehameha com kaioken blue!");
+            perso.setKi(perso.getKi() - 50);
+            return this;
+        }
     }
     
     @Override
@@ -46,9 +56,11 @@ public class SSJBlue implements LutadorState{
     
     @Override
     public LutadorState verificarKI(){
-        if(perso.getKi() < 300){
+        if(perso.getKi() < 300 && perso.getKi() >= 0){
             System.out.println("Ki baixo! Voltando para forma SSJ3.");
             return new SSJ3(perso);
+        }else if (perso.getKi() < 0){
+           return new Morte(perso);
         }else{
            return this; 
         }

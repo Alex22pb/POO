@@ -16,10 +16,20 @@ public class SSJ1 implements LutadorState{
     }
         
     @Override
-    public LutadorState atacar(){
-        System.out.println(perso.getNome() + " em SSJ1 usa Kamehameha!");
-        perso.setKi(perso.getKi() - 20);
-        return this;
+    public LutadorState atacar(){      
+        if (perso.getAtaquesConsecutivos() >= 3) {
+            System.out.println(perso.getNome() + " atacou com tanta fúria que ultrapassou seus limites!");
+            System.out.println("Transformando-se espontaneamente para uma nova forma!");
+            System.out.println("AAAAAAH! " + perso.getNome() + " vira Super Saiyajin 3!");
+            perso.setKi(250);
+            perso.setAtaquesConsecutivos(0);
+            return new SSJ3(perso);
+        } else {
+            perso.setAtaquesConsecutivos(perso.getAtaquesConsecutivos() + 1);
+            System.out.println(perso.getNome() + " em SSJ1 usa Kamehameha!");
+            perso.setKi(perso.getKi() - 20);
+            return this;
+        }
     }
     
     @Override
@@ -46,9 +56,11 @@ public class SSJ1 implements LutadorState{
     
     @Override
     public LutadorState verificarKI(){
-        if(perso.getKi() < 150){
+        if(perso.getKi() < 150 && perso.getKi() >= 0){
             System.out.println("Ki baixo! Voltando para forma normal.");
             return new FormaNormal(perso);
+        }else if (perso.getKi() < 0){
+           return new Morte(perso);
         }else{
            return this; 
         }

@@ -16,10 +16,20 @@ public class SSJ3 implements LutadorState{
     }
     
     @Override
-    public LutadorState atacar(){
-        System.out.println(perso.getNome() + " em SSJ3 usa Kamehameha kaioken 10x!");
-        perso.setKi(perso.getKi() - 40);
-        return this;
+    public LutadorState atacar(){        
+        if (perso.getAtaquesConsecutivos() >= 3) {
+            System.out.println(perso.getNome() + " atacou com tanta fúria que ultrapassou seus limites!");
+            System.out.println("Transformando-se espontaneamente para uma nova forma!");
+            System.out.println("AAAAAAH! " + perso.getNome() + " vira Super Saiyajin God!");
+            perso.setKi(350);
+            perso.setAtaquesConsecutivos(0);
+            return new SSJGod(perso);
+        } else {
+            perso.setAtaquesConsecutivos(perso.getAtaquesConsecutivos() + 1);
+            System.out.println(perso.getNome() + " em SSJ3 usa Kamehameha kaioken 10x!");
+            perso.setKi(perso.getKi() - 40);
+            return this;
+        }
     }
     
     @Override
@@ -46,9 +56,11 @@ public class SSJ3 implements LutadorState{
     
     @Override
     public LutadorState verificarKI(){
-        if(perso.getKi() < 250){
+        if(perso.getKi() < 250 && perso.getKi() >= 0){
             System.out.println("Ki baixo! Voltando para forma SSJ2");
             return new SSJBlue(perso);
+        }else if (perso.getKi() < 0){
+           return new Morte(perso);
         }else{
            return this; 
         }

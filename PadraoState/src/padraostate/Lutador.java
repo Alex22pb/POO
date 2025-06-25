@@ -14,6 +14,7 @@ public class Lutador {
     String nome;
     int ki;
     int vida;
+    int ataquesConsecutivos = 0;
 
     public Lutador(String nome, int ki, int vida) {
         this.nome = nome;
@@ -40,6 +41,14 @@ public class Lutador {
 
     public void setVida(int vida) {
         this.vida = vida;
+    }
+
+    public int getAtaquesConsecutivos() {
+        return ataquesConsecutivos;
+    }
+
+    public void setAtaquesConsecutivos(int ataquesConsecutivos) {
+        this.ataquesConsecutivos = ataquesConsecutivos;
     }
     
     public void transformar(){
